@@ -1,111 +1,252 @@
+@import url("./assets/fonts/fonts.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
+  --accent: #ee171f;
+
+  --text: #9d9d9d;
+
   --bg: #fff;
   --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --bg: hsl(0 0% 6%);
+  --fg: hsl(0 0% 100%);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  --card: hsl(0 0% 10%);
+  --card-foreground: hsl(0 0% 100%);
+
+  --popover: hsl(0 0% 10%);
+  --popover-foreground: hsl(0 0% 100%);
+
+  --primary: hsl(359 87% 52%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  --secondary: hsl(0 0% 14%);
+  --secondary-foreground: hsl(0 0% 100%);
+
+  --muted: hsl(0 0% 14%);
+  --muted-foreground: hsl(0 0% 63%);
+
+  --accent-foreground: hsl(0 0% 6%);
+
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --border: hsl(0 0% 16%);
+  --input: hsl(0 0% 18%);
+  --ring: hsl(359 87% 52%);
+
+  --radius: 0.75rem;
+  --padding: 0.5em 0.75em;
+
+  --sidebar-background: hsl(0 0% 8%);
+  --sidebar-foreground: hsl(0 0% 100%);
+  --sidebar-primary: hsl(359 87% 52%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(0 0% 14%);
+  --sidebar-accent-foreground: hsl(0 0% 100%);
+  --sidebar-border: hsl(0 0% 18%);
+  --sidebar-ring: hsl(359 87% 52%);
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.6);
+  --shadow-glow:
+    0 0 40px hsl(359 87% 52% / 0.2), 0 0 80px hsl(359 87% 52% / 0.05);
+  --shadow-glow-strong:
+    0 0 60px hsl(359 87% 52% / 0.35), 0 0 120px hsl(359 87% 52% / 0.1);
+  --glass-bg: hsl(0 0% 100% / 0.04);
+  --glass-border: hsl(0 0% 100% / 0.08);
+
+  --sans: "BentonSans ExtraComp", Arial, sans-serif;
+  --heading: "Marvel", Arial, sans-serif;
+
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 p {
-  margin: 0;
+  text-wrap: pretty;
 }
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
 }
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+a {
+  color: black;
+  text-decoration: none;
 }
