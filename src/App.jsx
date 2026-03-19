@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home/Home";
+import Characters from "./pages/Characters/Characters";
+import Comics from "./pages/Comics/Comics";
 
 function App() {
   return (
@@ -11,8 +13,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/comics" />
-          <Route path="/characters" />
+          <Route path="/characters" element={<Characters />} />
+          <Route path="/comics" element={<Comics />} />
           <Route
             path="*"
             element={
@@ -31,3 +33,7 @@ function App() {
 }
 
 export default App;
+
+// TODO take care of unavaible pictures
+// TODO scheleton
+// TODO image quality change on query

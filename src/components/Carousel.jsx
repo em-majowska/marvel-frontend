@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Character from "./Character";
+import Comic from "./Comic";
 
 const Carousel = ({ ctaText, title, dataToFetch, link }) => {
   const [data, setData] = useState([]);
@@ -37,12 +39,12 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
 
   return (
     <section>
-      <div className="title-container">
+      <div className="header-container">
         <span className="cta-text">{ctaText}</span>
-        <div className="title">
-          <h2>
+        <div className="header-row">
+          <h2 className="header">
             {title}
-            <span className="title-bottom"></span>
+            <span className="header-bottom"></span>
           </h2>
           <Link to={link}>
             View all <span>&#8594;</span>
@@ -55,49 +57,10 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
       ) : (
         <div className="carousel ">
           {data.map((item) => {
-            console.log(item);
             return item.name ? (
-              <Link
-                to={`character/${item.id}`}
-                key={item.id}
-                className="card pseudo character">
-                <article>
-                  <img
-                    src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
-                    alt="hero image"
-                  />
-                  <div className="card-text">
-                    <h3>{item.name}</h3>
-                  </div>
-                </article>
-              </Link>
+              <Character key={item.id} item={item} />
             ) : (
-              // {
-              //   thumbnail: {
-              //     path: 'http://i.annihil.us/u/prod/marvel/i/mg/8/20/5aa0527ab02c4',
-              //     extension: 'jpg'
-              //   },
-              //   _id: '5fce275278edeb0017c97708',
-              //   title: '1602 (2003) #1',
-              //   description:
-              //     'The start of a whole new Marvel Universe begins here! It\'s the Marvel Universe in the year 1602.',
-              //   __v: 0
-              // }
-
-              <Link
-                to={`comic/${item.id}`}
-                key={item.id}
-                className="card comic">
-                <article>
-                  <img
-                    src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
-                    alt="hero image"
-                  />
-                  <div className="card-text">
-                    <h3>{item.title}</h3>
-                  </div>
-                </article>
-              </Link>
+              <Comic key={item.id} item={item} />
             );
           })}
         </div>

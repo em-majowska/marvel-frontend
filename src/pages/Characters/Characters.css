@@ -1,0 +1,22 @@
+.characters {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .list {
+    min-height: 700px;
+    min-width: calc(375px - 2rem);
+
+    a {
+      flex: 1 0 calc((100% - 1rem) / 2);
+      max-width: calc(50% - 1rem);
+      border-radius: 10px;
+    }
+
+    img {
+      filter: brightness(0.7);
+    }
+  }
+}

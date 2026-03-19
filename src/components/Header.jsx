@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Hero from "./Hero";
 
 const Header = () => {
+  const location = useLocation();
+  console.log(location);
+
   return (
     <header>
       <div className="navbar">
@@ -12,21 +15,37 @@ const Header = () => {
           <nav>
             <ul>
               <li>
-                <Link to="/" className="selected">
-                  HOME
-                </Link>
+                {location.pathname === "/" ? (
+                  <Link to="/" className="selected">
+                    HOME
+                  </Link>
+                ) : (
+                  <Link to="/">HOME</Link>
+                )}
               </li>
               <li>
-                <Link to="/characters">COMICS</Link>
+                {location.pathname === "/comics" ? (
+                  <Link to="/comics" className="selected">
+                    COMICS
+                  </Link>
+                ) : (
+                  <Link to="/comics">COMICS</Link>
+                )}
               </li>
               <li>
-                <Link to="/characters">CHARACTERS</Link>
+                {location.pathname === "/characters" ? (
+                  <Link to="/characters" className="selected">
+                    CHARACTERS
+                  </Link>
+                ) : (
+                  <Link to="/characters">CHARACTERS</Link>
+                )}
               </li>
             </ul>
           </nav>
         </div>
       </div>
-      <Hero />
+      {location.pathname === "/" && <Hero />}
     </header>
   );
 };
