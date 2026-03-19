@@ -49,8 +49,9 @@ h4 {
   font-weight: bold;
   font-family: var(--font-display);
   font-size: 1.125rem;
-  color: hsl(var(--primary-foreground));
+  color: hsl(var(--fg));
   text-align: center;
+  line-height: 1;
 }
 
 .btn:hover {
@@ -62,6 +63,7 @@ h4 {
 }
 .btn-secondary:hover {
   border: 1px solid hsla(var(--muted-foreground) / 0.5);
+  background: hsl(var(--muted));
 }
 
 .btn-primary {
@@ -246,24 +248,33 @@ header {
 
 footer {
   font-size: 0.725rem;
-
+  border-block-start: 1px solid var(--glass-border);
   padding-block: 40px;
+  font-family: var(--font-body);
+
   .container {
     display: flex;
     align-items: center;
   }
   img {
-    width: 150px;
+    width: 100px;
+    margin-inline-end: 1.5rem;
   }
-  span {
-    margin-inline-start: 50px;
+  .container > span {
+    display: block;
+    height: 30px;
+    padding-inline-start: 1.5rem;
+    border-inline-start: 1px solid var(--glass-border);
+    line-height: 30px;
+    letter-spacing: 0.25em;
   }
 
   p {
+    margin-inline: auto 0;
+    font-weight: 200;
     a,
     span {
-      color: var(--text);
-      font-weight: bold;
+      font-weight: 400;
     }
   }
 }

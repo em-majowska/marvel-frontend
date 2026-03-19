@@ -1,7 +1,10 @@
 .home {
+  padding-block-end: 0;
+
   section {
     position: relative;
   }
+
   .carousel::-webkit-scrollbar {
     display: none;
   }
@@ -94,8 +97,16 @@
       object-fit: cover;
       object-position: right top;
       filter: brightness(0.3) saturate(0%);
-      transform-origin: right top;
+      transform-origin: center;
+
       transition: all 0.8s;
+    }
+  }
+
+  .carousel .card:hover {
+    img {
+      filter: brightness(0.7);
+      transform: scale(1.1);
     }
   }
 }
@@ -115,7 +126,7 @@
 /* ================================================================ */
 .carousel .character:hover {
   img {
-    transform: scale(1.3);
+    transform-origin: right top;
     filter: brightness(0.7);
   }
 }
@@ -141,7 +152,9 @@
 /* ================================================================ */
 /* ============================ COMIC ============================== */
 /* ================================================================ */
-
+.carousel .card.comic {
+  flex: 1 0 200px;
+}
 .carousel .comic:hover {
   img {
     filter: brightness(0.7);
@@ -152,6 +165,54 @@
   transition: all 0.3s;
 }
 
-.comic .card-text {
+.card.comic .card-text h3 {
   font-size: 0.875rem;
 }
+
+.home .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background:
+    radial-gradient(hsla(var(--bg) / 0.95) 20%, hsl(var(--bg)) 70%),
+    top/ cover url("../../assets/images/background.jpg") no-repeat;
+  object-fit: cover;
+
+  p {
+    text-align: center;
+    width: 400px;
+  }
+
+  .big-text {
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: var(--font-display);
+    color: hsl(var(--fg));
+    text-wrap: balance;
+    letter-spacing: 0.1em;
+    margin-block-end: 30px;
+
+    span {
+      color: hsl(var(--primary));
+    }
+  }
+
+  p:last-of-type {
+    line-height: 1.5;
+    margin-block-end: 50px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+/* .home .bottom::after {
+  background: ;
+} */

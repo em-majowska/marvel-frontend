@@ -1,5 +1,6 @@
 import "./Home.css";
 import Carousel from "../../components/Carousel";
+import Button from "../../components/Button";
 
 const Home = () => {
   const charactersToGet = [
@@ -43,6 +44,19 @@ const Home = () => {
         dataToFetch={comicsToGet}
         link="/comics"
       />
+      <div className="bottom">
+        <p className="big-text">
+          ready to <span>explore?</span>
+        </p>
+        <p>
+          Dive deep into the Marvel Universe and discover the stories behind
+          every hero
+        </p>
+        <div className="buttons">
+          <Button path={"/characters"} text="EXPLORE HEROES" filled={true} />
+          <Button path={"/comics"} text="BROWSE COMICS" />
+        </div>
+      </div>
     </main>
   );
 };
