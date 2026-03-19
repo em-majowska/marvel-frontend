@@ -1,0 +1,157 @@
+.home {
+  section {
+    position: relative;
+  }
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel {
+    min-height: 350px;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  section::after {
+    position: absolute;
+    content: "";
+    inset-inline: 0;
+    inset-block: 90px 0;
+    background: linear-gradient(to right, transparent 80%, hsl(var(--bg)));
+    pointer-events: none;
+  }
+
+  .title-container {
+    padding-inline-start: 1rem;
+    margin-block-end: 50px;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 3rem;
+      text-transform: uppercase;
+    }
+
+    a {
+      padding: var(--padding);
+
+      span {
+        display: inline-block;
+      }
+    }
+
+    a:hover {
+      color: hsl(var(--primary));
+
+      span {
+        transform: translateX(5px);
+      }
+    }
+
+    .cta-text {
+      display: block;
+      font-weight: 400;
+      color: hsl(var(--primary));
+      font-size: 0.725rem;
+      margin-block-end: 20px;
+      font-family: var(--font-body);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .title-bottom {
+      display: block;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+      margin-block-start: 10px;
+      background: linear-gradient(
+        to right,
+        hsl(var(--primary)),
+        transparent 30%
+      );
+    }
+  }
+
+  .carousel .card {
+    position: relative;
+    flex: 1 0 250px;
+    overflow: hidden;
+  }
+
+  .carousel {
+    img {
+      position: relative;
+      width: 100%;
+      object-fit: cover;
+      object-position: right top;
+      filter: brightness(0.3) saturate(0%);
+      transform-origin: right top;
+      transition: all 0.8s;
+    }
+  }
+}
+
+.home .divider {
+  margin-block: 100px;
+  width: 100%;
+  height: 3px;
+  background: radial-gradient(
+    hsla(var(--muted-foreground) / 0.5),
+    transparent 50%
+  );
+}
+
+/* ================================================================ */
+/* ============================ CHARACTER ============================== */
+/* ================================================================ */
+.carousel .character:hover {
+  img {
+    transform: scale(1.3);
+    filter: brightness(0.7);
+  }
+}
+
+.carousel .character::after {
+  background: linear-gradient(to bottom, transparent 40%, hsl(var(--bg)) 90%);
+  transition: background 1.3s ease;
+}
+
+.character {
+  .card-text {
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    z-index: 5;
+
+    h3 {
+      font-size: 1.5rem;
+      color: hsl(var(--fg));
+    }
+  }
+}
+/* ================================================================ */
+/* ============================ COMIC ============================== */
+/* ================================================================ */
+
+.carousel .comic:hover {
+  img {
+    filter: brightness(0.7);
+  }
+}
+.comic img {
+  margin-block-end: 20px;
+  transition: all 0.3s;
+}
+
+.comic .card-text {
+  font-size: 0.875rem;
+}

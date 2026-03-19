@@ -6,35 +6,105 @@ body {
   font-family: var(--font-body);
 }
 
-nav a {
-  color: var(--text);
-  font-weight: 100;
-}
-
-.logo,
-h1,
-h1,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-family: var(--heading);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 .container {
-  max-width: min(100% - 2rem, 1240px);
+  max-width: min(100% - 2rem, 1280px);
   margin: 0 auto;
 }
 
 main {
   min-height: calc(100vh - 56px);
+  padding-block: 80px;
+}
+
+a {
+  color: hsl(var(--text));
+}
+
+.logo,
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: hsl(var(--fg));
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  max-width: 65ch;
+}
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn {
+  padding: var(--btn-padding);
+  border-radius: var(--radius);
+  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: hsl(var(--primary-foreground));
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  border: 1px solid hsl(var(--border));
+}
+.btn-secondary:hover {
+  border: 1px solid hsla(var(--muted-foreground) / 0.5);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    -150deg,
+    hsl(var(--primary)),
+    hsl(var(--primary))
+  );
+  border: 0;
+  transform: translateY(0px);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    -150deg,
+    hsl(var(--primary)),
+    hsl(var(--destructive))
+  );
+  box-shadow: var(--shadow-glow-strong);
+}
+
+.pseudo::after {
+  position: absolute;
+  content: "";
+  inset: 0;
 }
 
 /* ================================================================ */
 /* ============================ HEADER ============================== */
 /* ================================================================ */
 header {
+  position: relative;
+
+  .navbar {
+    position: absolute;
+    top: 0;
+    inset-inline: 0;
+    background-color: hsla(var(--bg) / 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 99;
+    border-block-end: 1px solid var(--glass-border);
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -43,10 +113,11 @@ header {
 
   .logo {
     display: inline-block;
-    padding: var(--padding);
-    font-size: 1.75rem;
-    color: var(--accent);
+    padding: 0.5em;
+    font-size: 1.875rem;
+    color: hsl(var(--primary));
     letter-spacing: 0.1em;
+    font-weight: 200;
   }
   ul {
     display: flex;
@@ -57,6 +128,115 @@ header {
     padding: var(--padding);
     font-family: var(--font-display);
     font-weight: bold;
+    letter-spacing: 0.2em;
+    border-radius: var(--radius);
+  }
+  ul a:hover {
+    color: hsl(var(--fg));
+  }
+
+  ul a.selected {
+    color: hsl(var(--primary));
+    border: 1px solid hsla(var(--primary) / 0.18);
+    background-color: hsl(var(--primary) / 0.1);
+  }
+
+  .hero {
+    position: relative;
+    .video-container {
+      position: relative;
+      width: 100%;
+    }
+    video {
+      min-height: 100vh;
+      filter: brightness(0.5) contrast(1.2);
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .video-container::after {
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        hsl(var(--bg)) 100%
+      );
+    }
+
+    .hero-container {
+      position: absolute;
+      top: 35%;
+      left: 1rem;
+    }
+
+    .top-text {
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      border: 1px solid hsla(var(--primary) / 0.25);
+      background-color: hsla(var(--primary) / 0.15);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+    }
+
+    h1 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 9.503vw + -0.102rem, 7.5rem);
+      margin-block: 2rem;
+      line-height: 1;
+
+      span {
+        display: block;
+        font-size: clamp(5.5rem, 10.608vw + 1.514rem, 10rem);
+        color: hsl(var(--primary));
+      }
+    }
+    .baseline {
+      line-height: 1.75;
+      max-width: 45ch;
+      text-wrap: balance;
+      margin-block-end: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-block-end: 2rem;
+
+      a {
+        flex: 1;
+      }
+    }
+  }
+
+  .scroll {
+    position: absolute;
+    bottom: 4rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    font-family: var(--font-body);
+    font-size: 0.725rem;
+    letter-spacing: 0.25em;
+    z-index: 10;
+  }
+  .scroll:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2.5rem;
+    left: calc(50% - 2.5px);
+    width: 5px;
+    height: 30px;
+    background: linear-gradient(
+      180deg,
+      hsla(var(--primary) / 0.7),
+      hsla(var(--primary) / 0.1)
+    );
+    border-radius: 5px;
   }
 }
 
