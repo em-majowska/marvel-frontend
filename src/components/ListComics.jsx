@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ComicCard from "./ComicCard";
-import fetchDataCollection from "../util/fetchDataCollection";
+import fetchDataCollection from "../utils/fetchDataCollection";
 
 const ListComics = ({
   setTotalItems,
@@ -11,6 +11,7 @@ const ListComics = ({
   limit,
   search,
   dataToFetch,
+  fromCharacter,
 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +47,7 @@ const ListComics = ({
   ) : (
     <section className="list">
       {data.map((item) => (
-        <ComicCard key={item._id} item={item} />
+        <ComicCard key={item._id} item={item} fromCharacter={fromCharacter} />
       ))}
     </section>
   );

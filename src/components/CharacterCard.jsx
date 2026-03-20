@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
+import sliceText from "../utils/sliceText";
 
 const CharacterCard = ({ item }) => {
-  const sliceText = (str) => str.slice(0, 70) + "...";
   const location = useLocation().pathname;
 
   return (
@@ -16,7 +16,7 @@ const CharacterCard = ({ item }) => {
           {location === "/characters" && (
             <p className="description">
               {item.description.length > 70
-                ? sliceText(item.description)
+                ? sliceText(item.description, 70)
                 : item.description}
             </p>
           )}

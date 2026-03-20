@@ -1,0 +1,12 @@
+.comic-page {
+  .header-container {
+    margin-block-end: 0;
+  }
+  .data {
+    flex-direction: column;
+
+    p:first-of-type {
+      line-height: 1;
+    }
+  }
+}

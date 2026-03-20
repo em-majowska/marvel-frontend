@@ -8,12 +8,13 @@
   input[type="search"] {
     margin-block-start: 50px;
     width: 100%;
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius: 10px;
     outline: none;
     border: 1px solid var(--glass-border);
     background: var(--glass-bg);
     box-shadow: var(--shadow-glow-strong);
+    color: hsl(var(--fg));
   }
 
   input:focus-visible {
@@ -39,14 +40,22 @@
     }
 
     img {
+      width: 100%;
+      background: url(https://dummyimage.com/100/fff/0011ff.png&text=Image+Not+Found)
+        no-repeat scroll 0 0;
       filter: brightness(0.7);
     }
   }
 
-  .card-text {
+  .card .card-text {
     padding: 0.5rem;
     text-shadow: black 2px 5px 5px;
     bottom: 0;
+    width: 100%;
+
+    h3 {
+      font-size: 1.5rem;
+    }
 
     .description {
       max-height: 0px;
@@ -74,8 +83,4 @@
 .comics .card-text {
   position: absolute;
   background: linear-gradient(to top, hsla(var(--bg)) 40%, transparent);
-
-  h3 {
-    font-size: 1.25rem;
-  }
 }

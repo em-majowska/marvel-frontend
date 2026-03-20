@@ -1,0 +1,70 @@
+.character-page,
+.comic-page {
+  padding-block-start: 0;
+  .hero {
+    position: relative;
+    width: 100%;
+  }
+  .hero-image {
+    position: relative;
+  }
+  .hero-image::after {
+    background: linear-gradient(to bottom, transparent, hsl(var(--bg)) 90%);
+  }
+
+  .hero img {
+    width: 100%;
+    filter: brightness(0.7);
+    height: clamp(600px, 80vh, 800px);
+    object-fit: cover;
+  }
+
+  .header-container {
+    position: absolute;
+    bottom: 4rem;
+    padding-inline: 1rem;
+
+    a {
+      padding: 1rem;
+      margin-inline: -1rem;
+    }
+
+    a:hover span {
+      transform: translateX(-5px);
+    }
+
+    h1 {
+      margin-block-start: 30px;
+      font-size: clamp(3.75rem, 8.314vw + 1.599rem, 8.25rem);
+    }
+  }
+
+  .data {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin-block-end: 50px;
+    border-block: 1px solid var(--glass-border);
+
+    p {
+      padding: 1rem;
+    }
+    p:not(.description) {
+      display: flex;
+
+      flex-direction: column;
+      align-items: center;
+      font-size: 3rem;
+      flex: 1;
+      font-weight: bold;
+      font-family: var(--font-display);
+      border-inline-end: 1px solid var(--glass-border);
+
+      span {
+        font-size: 1.125rem;
+        letter-spacing: 0.25em;
+      }
+    }
+  }
+}
