@@ -1,5 +1,6 @@
 .characters,
-.comics {
+.comics,
+.character-page {
   .header-container {
     padding: 0;
     margin-block-end: 0;

@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Characters from "./pages/Characters/Characters";
 import Comics from "./pages/Comics/Comics";
 import { MdError } from "react-icons/md";
+import Character from "./pages/Character/Character";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/characters" element={<Characters />} />
+          <Route path="/character/:id" element={<Character />} />
+          {/* <Route path="/comic/:id" element={<Comic />} /> */}
           <Route path="/comics" element={<Comics />} />
           <Route
             path="*"

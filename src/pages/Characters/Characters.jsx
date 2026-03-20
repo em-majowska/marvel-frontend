@@ -1,6 +1,4 @@
-import "./Characters.css";
 import { useState } from "react";
-import Character from "../../components/CharacterCard";
 import Pagination from "rc-pagination";
 import {
   MdOutlineArrowBackIos,

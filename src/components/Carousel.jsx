@@ -58,9 +58,9 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
         <div className="carousel ">
           {data.map((item) => {
             return item.name ? (
-              <CharacterCard key={item.id} item={item} />
+              <CharacterCard key={item._id} item={item} />
             ) : (
-              <ComicCard key={item.id} item={item} />
+              <ComicCard key={item._id} item={item} />
             );
           })}
         </div>

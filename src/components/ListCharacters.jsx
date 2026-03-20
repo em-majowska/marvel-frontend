@@ -37,7 +37,7 @@ const ListCharacters = ({
   ) : (
     <section className="list">
       {data.map((item) => {
-        return <CharacterCard key={item.id} item={item} />;
+        return <CharacterCard key={item._id} item={item} />;
       })}
     </section>
   );

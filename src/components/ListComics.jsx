@@ -1,27 +1,36 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ComicCard from "./ComicCard";
+import fetchDataCollection from "../util/fetchDataCollection";
 
 const ListComics = ({
   setTotalItems,
-  setIsLoading,
+  // setIsLoading,
+  // isLoading = true,
   currentPage,
   limit,
-  isLoading,
   search,
+  dataToFetch,
 }) => {
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_BASE_URL;
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${apiUrl}/comics?limit=${limit}&page=${currentPage}${search && "&title=" + search}`,
-        );
+        if (dataToFetch) {
+          const data = await fetchDataCollection("comic", dataToFetch);
+          setData(data);
+        } else {
+          const response = await axios.get(
+            `${apiUrl}/comics?limit=${limit}&page=${currentPage}${search && "&title=" + search}`,
+          );
 
-        setTotalItems(response.data.count);
-        setData(response.data.results);
+          setTotalItems(response.data.count);
+          setData(response.data.results);
+        }
+
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
@@ -30,14 +39,14 @@ const ListComics = ({
     };
 
     fetchData();
-  }, [currentPage, limit, setIsLoading, setTotalItems, search]);
+  }, [currentPage, limit, setIsLoading, setTotalItems, search, dataToFetch]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <section className="list">
       {data.map((item) => (
-        <ComicCard key={item.id} item={item} />
+        <ComicCard key={item._id} item={item} />
       ))}
     </section>
   );
