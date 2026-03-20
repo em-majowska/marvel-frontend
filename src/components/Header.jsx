@@ -13,7 +13,7 @@ const Header = () => {
           </Link>
           <nav>
             <ul>
-              <li>
+              {/* <li>
                 {location.pathname === "/" ? (
                   <Link to="/" className="selected">
                     HOME
@@ -21,7 +21,7 @@ const Header = () => {
                 ) : (
                   <Link to="/">HOME</Link>
                 )}
-              </li>
+              </li> */}
               <li>
                 {location.pathname === "/comics" ? (
                   <Link to="/comics" className="selected">

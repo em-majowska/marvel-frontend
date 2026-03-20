@@ -55,7 +55,7 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="carousel ">
+        <div className="carousel">
           {data.map((item) => {
             return item.name ? (
               <CharacterCard key={item._id} item={item} />

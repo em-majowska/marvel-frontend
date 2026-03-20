@@ -14,14 +14,16 @@ const ComicCard = ({ item, fromCharacter }) => {
       }}
       className="card comic">
       <article>
-        <img
-          src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
-          alt="hero image"
-          onError={(event) => {
-            event.target.onerror = null;
-            event.target.src = imagePlacehodler;
-          }}
-        />
+        <div className="img-container">
+          <img
+            src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
+            alt="hero image"
+            onError={(event) => {
+              event.target.onerror = null;
+              event.target.src = imagePlacehodler;
+            }}
+          />
+        </div>
         <div className="card-text">
           <h3>{item.title}</h3>
           {location === "/comics" && (

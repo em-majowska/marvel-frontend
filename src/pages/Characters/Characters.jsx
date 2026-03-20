@@ -12,8 +12,8 @@ import Input from "../../components/Input";
 const Characters = () => {
   const [search, setSearch] = useState("");
 
-  const [currentPage, setcurrentPage] = useState(1);
-  const limit = 25;
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 26;
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,7 +52,7 @@ const Characters = () => {
           jumpPrevIcon={<MdOutlineKeyboardDoubleArrowLeft />}
           onChange={(pageNumber) => {
             setIsLoading(true);
-            setcurrentPage(pageNumber);
+            setCurrentPage(pageNumber);
           }}
         />
       </div>

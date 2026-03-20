@@ -4,8 +4,10 @@ const Footer = () => {
   return (
     <footer>
       <div className="container">
-        <img src={logo} alt="" />
-        <span>UNIVERSE</span>
+        <div className="logo">
+          <img src={logo} alt="marvel logo" />
+          <span>UNIVERSE</span>
+        </div>
         <p>
           &copy; 2026 Made with <span>React </span> at{" "}
           <a href="https://www.lereacteur.io/">Le Reacteur</a> by{" "}

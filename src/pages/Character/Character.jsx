@@ -3,10 +3,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ListComics from "../../components/ListComics";
+import Pagination from "rc-pagination";
+import {
+  MdOutlineArrowBackIos,
+  MdOutlineArrowForwardIos,
+  MdOutlineKeyboardDoubleArrowLeft,
+  MdOutlineKeyboardDoubleArrowRight,
+} from "react-icons/md";
 
 const Character = () => {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 6;
+  const [totalItems, setTotalItems] = useState(0);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -16,6 +27,7 @@ const Character = () => {
         const response = await axios.get(`${apiUrl}/character/${id}`);
         setCharacter(response.data);
 
+        setTotalItems(response.data.comics.length);
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
@@ -55,6 +67,21 @@ const Character = () => {
         <ListComics
           dataToFetch={character.comics}
           fromCharacter={character._id}
+          limit={limit}
+          currentPage={currentPage}
+        />
+        <Pagination
+          current={currentPage}
+          pageSize={limit}
+          total={totalItems}
+          align="center"
+          prevIcon={<MdOutlineArrowBackIos />}
+          nextIcon={<MdOutlineArrowForwardIos />}
+          jumpNextIcon={<MdOutlineKeyboardDoubleArrowRight />}
+          jumpPrevIcon={<MdOutlineKeyboardDoubleArrowLeft />}
+          onChange={(pageNumber) => {
+            setCurrentPage(pageNumber);
+          }}
         />
       </div>
     </main>
@@ -62,5 +89,3 @@ const Character = () => {
 };
 
 export default Character;
-
-// TODO pagination

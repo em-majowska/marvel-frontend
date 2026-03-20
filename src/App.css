@@ -314,43 +314,6 @@ header {
 }
 
 /* ================================================================ */
-/* ============================ FOOTER ============================== */
-/* ================================================================ */
-
-footer {
-  font-size: 0.725rem;
-  border-block-start: 1px solid var(--glass-border);
-  padding-block: 40px;
-  font-family: var(--font-body);
-
-  .container {
-    display: flex;
-    align-items: center;
-  }
-  img {
-    width: 100px;
-    margin-inline-end: 1.5rem;
-  }
-  .container > span {
-    display: block;
-    height: 30px;
-    padding-inline-start: 1.5rem;
-    border-inline-start: 1px solid var(--glass-border);
-    line-height: 30px;
-    letter-spacing: 0.25em;
-  }
-
-  p {
-    margin-inline: auto 0;
-    font-weight: 200;
-    a,
-    span {
-      font-weight: 400;
-    }
-  }
-}
-
-/* ================================================================ */
 /* ============================ CARDS ============================== */
 /* ================================================================ */
 
@@ -376,6 +339,10 @@ footer {
     filter: brightness(0.7);
     transform: scale(1.1);
   }
+}
+
+.carousel .img-container {
+  margin-block-end: 20px;
 }
 /* ================================================================ */
 /* ============================ CHARACTER ============================== */
@@ -419,8 +386,12 @@ footer {
     filter: brightness(0.7);
   }
 }
+
+.comic .img-container {
+  overflow: hidden;
+}
+
 .comic img {
-  margin-block-end: 20px;
   transition: all 0.3s;
 }
 
@@ -433,15 +404,18 @@ footer {
 /* ================================================================ */
 
 .rc-pagination {
-  width: 100%;
+  max-width: 100%;
   margin-block-start: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 
+  li {
+    flex: 0 1 auto;
+  }
   li a {
-    padding: 1em;
+    padding: 0.75em;
     border: 1px solid hsl(var(--muted-foreground));
     border-radius: 5px;
     color: hsl(var(--fg));
@@ -456,10 +430,62 @@ footer {
   .rc-pagination-next,
   .rc-pagination-jump-next {
     cursor: pointer;
-    padding: 1em;
+    padding: 0.5em;
+    flex: 0 0 auto;
+    scale: 1.5;
+  }
+  .rc-pagination-prev:hover,
+  .rc-pagination-next:hover,
+  .rc-pagination-jump-next:hover {
+    color: hsl(var(--primary));
+  }
+}
 
-    svg {
-      scale: 2;
+/* ================================================================ */
+/* ============================ FOOTER ============================== */
+/* ================================================================ */
+
+footer {
+  border-block-start: 1px solid var(--glass-border);
+  padding-block: 40px;
+  font-size: 0.725rem;
+  font-family: var(--font-body);
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 100px;
+    margin-inline-end: 1.5rem;
+  }
+  .logo > span {
+    display: block;
+    height: 30px;
+    padding-inline: 1.5rem;
+    border-inline-start: 1px solid var(--glass-border);
+    line-height: 30px;
+    letter-spacing: 0.25em;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin-inline: auto 0;
+    font-weight: 200;
+    line-height: 1.25;
+    text-align: right;
+
+    a,
+    span {
+      font-weight: 400;
     }
   }
 }

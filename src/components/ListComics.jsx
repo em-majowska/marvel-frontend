@@ -5,8 +5,6 @@ import fetchDataCollection from "../utils/fetchDataCollection";
 
 const ListComics = ({
   setTotalItems,
-  // setIsLoading,
-  // isLoading = true,
   currentPage,
   limit,
   search,
@@ -22,7 +20,10 @@ const ListComics = ({
       try {
         if (dataToFetch) {
           const data = await fetchDataCollection("comic", dataToFetch);
-          setData(data);
+          const skip = currentPage > 1 ? limit * (currentPage - 1) : 0;
+          const sliced = data.slice(skip, currentPage * limit);
+
+          setData(sliced);
         } else {
           const response = await axios.get(
             `${apiUrl}/comics?limit=${limit}&page=${currentPage}${search && "&title=" + search}`,

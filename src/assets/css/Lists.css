@@ -23,15 +23,14 @@
   .divider {
     margin-block: 50px;
   }
-  .list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
 
   .list {
     min-height: 700px;
     min-width: calc(375px - 2rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
 
     a {
       flex: 1 0 calc((100% - 1rem) / 2);
