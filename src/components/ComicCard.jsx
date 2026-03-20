@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Comic = ({ item }) => {
+const ComicCard = ({ item }) => {
+  const sliceText = (str) => str.slice(0, 70) + "...";
+  const location = useLocation().pathname;
+
   // {
   //   thumbnail: {
   //     path: 'http://i.annihil.us/u/prod/marvel/i/mg/8/20/5aa0527ab02c4',
@@ -21,10 +24,17 @@ const Comic = ({ item }) => {
         />
         <div className="card-text">
           <h3>{item.title}</h3>
+          {location === "/comics" && (
+            <div className="description">
+              {item.description?.length > 70
+                ? sliceText(item.description)
+                : item.description}
+            </div>
+          )}
         </div>
       </article>
     </Link>
   );
 };
 
-export default Comic;
+export default ComicCard;

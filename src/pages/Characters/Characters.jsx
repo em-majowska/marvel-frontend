@@ -1,6 +1,6 @@
 import "./Characters.css";
 import { useState } from "react";
-import Character from "../../components/Character";
+import Character from "../../components/CharacterCard";
 import Pagination from "rc-pagination";
 import {
   MdOutlineArrowBackIos,
@@ -9,8 +9,11 @@ import {
   MdOutlineKeyboardDoubleArrowLeft,
 } from "react-icons/md";
 import ListCharacters from "../../components/ListCharacters";
+import Input from "../../components/Input";
 
 const Characters = () => {
+  const [search, setSearch] = useState("");
+
   const [currentPage, setcurrentPage] = useState(1);
   const limit = 25;
   const [totalItems, setTotalItems] = useState(0);
@@ -26,6 +29,7 @@ const Characters = () => {
           <p className="baseline">
             Explore the heroes and villains of the Marvel Universe
           </p>
+          <Input search={search} setSearch={setSearch} />
         </section>
         <div className="divider"></div>
 
@@ -36,6 +40,7 @@ const Characters = () => {
           isLoading={isLoading}
           currentPage={currentPage}
           isCharacters={true}
+          search={search}
         />
 
         <Pagination

@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home/Home";
 import Characters from "./pages/Characters/Characters";
 import Comics from "./pages/Comics/Comics";
+import { MdError } from "react-icons/md";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             element={
               <main className="container">
                 <div className="error404">
-                  {/* <MdError /> <h1>Page non trouvable</h1> */}
+                  <MdError /> <h1>Page non trouvable</h1>
                 </div>
               </main>
             }
@@ -34,6 +35,13 @@ function App() {
 
 export default App;
 
+// TODO add favourites
+// TODO add descriptions to lists
+// TODO add input
 // TODO take care of unavaible pictures
-// TODO scheleton
 // TODO image quality change on query
+
+// TODO scheleton
+// responsiveness
+// auto-completion for search input
+// DB (username, email, password, favouurites)

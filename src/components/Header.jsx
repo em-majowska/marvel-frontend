@@ -3,7 +3,6 @@ import Hero from "./Hero";
 
 const Header = () => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <header>

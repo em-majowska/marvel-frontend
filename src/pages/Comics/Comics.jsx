@@ -7,15 +7,17 @@ import {
   MdOutlineKeyboardDoubleArrowLeft,
 } from "react-icons/md";
 import ListComics from "../../components/ListComics";
+import Input from "../../components/Input";
 
 const Comics = () => {
+  const [search, setSearch] = useState("");
   const [currentPage, setcurrentPage] = useState(1);
   const limit = 25;
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="characters">
+    <main className="comics">
       <div className="container">
         <section className="header-container">
           <h1 className="header">
@@ -24,6 +26,7 @@ const Comics = () => {
           <p className="baseline">
             Browse through legendary Marvel comic series
           </p>
+          <Input search={search} setSearch={setSearch} />
         </section>
         <div className="divider"></div>
 
@@ -33,6 +36,7 @@ const Comics = () => {
           limit={limit}
           isLoading={isLoading}
           currentPage={currentPage}
+          search={search}
         />
 
         <Pagination

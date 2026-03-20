@@ -357,14 +357,15 @@ footer {
 .card {
   position: relative;
   overflow: hidden;
+  flex: 1 0 250px;
 
   img {
     position: relative;
     width: 100%;
     object-fit: cover;
-    object-position: right top;
-    filter: brightness(0.3) saturate(0%);
+    object-position: center;
     transform-origin: center;
+    filter: brightness(0.3) saturate(0%);
 
     transition: all 0.8s;
   }
@@ -379,9 +380,13 @@ footer {
 /* ================================================================ */
 /* ============================ CHARACTER ============================== */
 /* ================================================================ */
+
+.character img {
+  object-position: right top;
+  transform-origin: right top;
+}
 .character:hover {
   img {
-    transform-origin: right top;
     filter: brightness(0.7);
   }
 }
@@ -396,6 +401,7 @@ footer {
     position: absolute;
     left: 0.5rem;
     bottom: 0.5rem;
+    width: calc(100% - 1rem);
     z-index: 5;
 
     h3 {
@@ -418,7 +424,7 @@ footer {
   transition: all 0.3s;
 }
 
-.card.comic .card-text h3 {
+.comic .card-text h3 {
   font-size: 0.875rem;
 }
 
@@ -427,6 +433,7 @@ footer {
 /* ================================================================ */
 
 .rc-pagination {
+  width: 100%;
   margin-block-start: 80px;
   display: flex;
   align-items: center;
@@ -435,7 +442,7 @@ footer {
 
   li a {
     padding: 1em;
-    border: 1px solid var(--glass-border);
+    border: 1px solid hsl(var(--muted-foreground));
     border-radius: 5px;
     color: hsl(var(--fg));
   }
@@ -450,5 +457,9 @@ footer {
   .rc-pagination-jump-next {
     cursor: pointer;
     padding: 1em;
+
+    svg {
+      scale: 2;
+    }
   }
 }

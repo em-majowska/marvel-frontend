@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Character from "./Character";
+import CharacterCard from "./CharacterCard";
 
 const ListCharacters = ({
   setTotalItems,
@@ -8,6 +8,7 @@ const ListCharacters = ({
   currentPage,
   limit,
   isLoading,
+  search,
 }) => {
   const [data, setData] = useState(null);
 
@@ -16,7 +17,7 @@ const ListCharacters = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}/characters?limit=${limit}&page=${currentPage}`,
+          `${apiUrl}/characters?limit=${limit}&page=${currentPage}${search && "&name=" + search}`,
         );
 
         setTotalItems(response.data.count);
@@ -29,14 +30,14 @@ const ListCharacters = ({
     };
 
     fetchData();
-  }, [currentPage, limit, setIsLoading, setTotalItems]);
+  }, [currentPage, limit, setIsLoading, setTotalItems, search]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <section className="list">
       {data.map((item) => {
-        return <Character key={item.id} item={item} />;
+        return <CharacterCard key={item.id} item={item} />;
       })}
     </section>
   );

@@ -1,0 +1,80 @@
+.characters,
+.comics {
+  .header-container {
+    padding: 0;
+    margin-block-end: 0;
+  }
+  input[type="search"] {
+    margin-block-start: 50px;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-glow-strong);
+  }
+
+  input:focus-visible {
+    outline: 1px solid hsl(var(--primary));
+  }
+  .divider {
+    margin-block: 50px;
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .list {
+    min-height: 700px;
+    min-width: calc(375px - 2rem);
+
+    a {
+      flex: 1 0 calc((100% - 1rem) / 2);
+      max-width: calc(50% - 1rem);
+      border-radius: 10px;
+    }
+
+    img {
+      filter: brightness(0.7);
+    }
+  }
+
+  .card-text {
+    padding: 0.5rem;
+    text-shadow: black 2px 5px 5px;
+    bottom: 0;
+
+    .description {
+      max-height: 0px;
+      font-size: 1.125rem;
+      color: hsl(var(--fg));
+      font-family: var(--font-body);
+      overflow: hidden;
+    }
+  }
+
+  .card:hover .card-text {
+    .description {
+      max-height: 200px;
+      flex: 1 0 auto;
+
+      padding-block-start: 10px;
+    }
+  }
+}
+
+/* ================================================================ */
+/* ============================ COMICS ============================== */
+/* ================================================================ */
+
+.comics .card-text {
+  position: absolute;
+  background: linear-gradient(to top, hsla(var(--bg)) 40%, transparent);
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}

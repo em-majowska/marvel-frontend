@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Comic from "./Comic";
+import ComicCard from "./ComicCard";
 
 const ListComics = ({
   setTotalItems,
@@ -8,6 +8,7 @@ const ListComics = ({
   currentPage,
   limit,
   isLoading,
+  search,
 }) => {
   const [data, setData] = useState(null);
 
@@ -16,7 +17,7 @@ const ListComics = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}/comics?limit=${limit}&page=${currentPage}`,
+          `${apiUrl}/comics?limit=${limit}&page=${currentPage}${search && "&title=" + search}`,
         );
 
         setTotalItems(response.data.count);
@@ -29,15 +30,15 @@ const ListComics = ({
     };
 
     fetchData();
-  }, [currentPage, limit, setIsLoading, setTotalItems]);
+  }, [currentPage, limit, setIsLoading, setTotalItems, search]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <section className="list">
-      {data.map((item) => {
-        return <Comic key={item.id} item={item} />;
-      })}
+      {data.map((item) => (
+        <ComicCard key={item.id} item={item} />
+      ))}
     </section>
   );
 };

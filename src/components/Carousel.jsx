@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Character from "./Character";
-import Comic from "./Comic";
+import CharacterCard from "./CharacterCard";
+import ComicCard from "./ComicCard";
 
 const Carousel = ({ ctaText, title, dataToFetch, link }) => {
   const [data, setData] = useState([]);
@@ -58,9 +58,9 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
         <div className="carousel ">
           {data.map((item) => {
             return item.name ? (
-              <Character key={item.id} item={item} />
+              <CharacterCard key={item.id} item={item} />
             ) : (
-              <Comic key={item.id} item={item} />
+              <ComicCard key={item.id} item={item} />
             );
           })}
         </div>
