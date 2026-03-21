@@ -7,12 +7,11 @@ const CharacterCard = ({ item, favourites, toggleFavourites, user }) => {
   const location = useLocation().pathname;
 
   return (
-    <article className="card character">
+    <article className="card character pseudo">
       <Link to={`/character/${item._id}`}>
         <img
           src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
           alt="hero image"
-          className="pseudo"
         />
 
         <div className="card-text">
