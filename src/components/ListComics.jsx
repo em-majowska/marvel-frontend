@@ -11,9 +11,7 @@ const ListComics = ({
   dataToFetch,
   fromCharacter,
   favourites,
-  setFavourites,
   toggleFavourites,
-  user,
 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +58,6 @@ const ListComics = ({
               item={item}
               fromCharacter={fromCharacter}
               favourites={favourites}
-              setFavourites={setFavourites}
               toggleFavourites={toggleFavourites}
             />
           ),

@@ -13,6 +13,7 @@ import SignupModal from "./components/SignupModal";
 import LoginModal from "./components/LoginModal";
 import Footer from "./components/Footer";
 import axios from "axios";
+import Account from "./pages/Account/Account";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("mut") || null);
@@ -100,7 +101,6 @@ function App() {
             element={
               <Home
                 favourites={favourites}
-                setFavourites={setFavourites}
                 toggleFavourites={toggleFavourites}
               />
             }
@@ -110,7 +110,6 @@ function App() {
             element={
               <Characters
                 favourites={favourites}
-                setFavourites={setFavourites}
                 toggleFavourites={toggleFavourites}
               />
             }
@@ -120,7 +119,6 @@ function App() {
             element={
               <Character
                 favourites={favourites}
-                setFavourites={setFavourites}
                 toggleFavourites={toggleFavourites}
               />
             }
@@ -130,7 +128,6 @@ function App() {
             element={
               <Comic
                 favourites={favourites}
-                setFavourites={setFavourites}
                 toggleFavourites={toggleFavourites}
               />
             }
@@ -140,7 +137,15 @@ function App() {
             element={
               <Comics
                 favourites={favourites}
-                setFavourites={setFavourites}
+                toggleFavourites={toggleFavourites}
+              />
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <Account
+                favourites={favourites}
                 toggleFavourites={toggleFavourites}
               />
             }
@@ -161,7 +166,6 @@ function App() {
             setSignupVisible={setSignupVisible}
             setLoginVisible={setLoginVisible}
             handleToken={handleToken}
-            setFavourites={setFavourites}
           />
         )}
         {loginVisible && (
@@ -169,7 +173,6 @@ function App() {
             setLoginVisible={setLoginVisible}
             setSignupVisible={setSignupVisible}
             handleToken={handleToken}
-            setFavourites={setFavourites}
           />
         )}
         <Footer />
@@ -180,10 +183,8 @@ function App() {
 
 export default App;
 
-// TODO add favourites
 // TODO image quality change on query
 
 // TODO scheleton
 // responsiveness
 // auto-completion for search input
-// DB (username, email, password, favouurites)

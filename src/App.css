@@ -131,59 +131,7 @@ header {
     letter-spacing: 0.1em;
     font-weight: 200;
   }
-  ul {
-    display: flex;
-    gap: 10px;
-  }
 
-  ul a,
-  button {
-    display: block;
-    padding: var(--padding);
-    font-family: var(--font-display);
-    font-weight: bold;
-    color: hsl(var(--muted-foreground));
-    letter-spacing: 0.2em;
-    border: 1px solid transparent;
-    border-radius: var(--radius);
-  }
-
-  ul a:hover,
-  ul button:hover {
-    color: hsl(var(--fg));
-  }
-
-  ul a.selected {
-    color: hsl(var(--primary));
-    border: 1px solid hsla(var(--primary) / 0.18);
-    background-color: hsl(var(--primary) / 0.1);
-  }
-  .login {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  li:has(.signup),
-  li:has(.logout) {
-    position: relative;
-    margin-inline-start: 10px;
-  }
-
-  li:has(.signup)::before,
-  li:has(.logout)::before {
-    position: absolute;
-    left: -10px;
-    content: "";
-    display: block;
-    width: 1px;
-    height: 100%;
-    background-color: hsl(var(--primary));
-  }
-
-  .logout {
-    border: 1px solid hsl(var(--glass-border));
-    background-color: hsl(var(--muted));
-  }
   .hero {
     position: relative;
     .video-container {

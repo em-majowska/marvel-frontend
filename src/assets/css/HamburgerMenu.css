@@ -1,0 +1,134 @@
+.hamburger-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+.hamburger {
+  cursor: pointer;
+  padding: 0;
+  z-index: 1011;
+  padding: 0.25rem;
+}
+
+.hamburger svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: hsl(var(--bg));
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu.open {
+  display: flex;
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu li {
+  margin: 1.5rem 0;
+}
+
+ul a,
+button {
+  display: block;
+  padding: var(--padding);
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: hsl(var(--muted-foreground));
+  letter-spacing: 0.2em;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+}
+
+ul a:hover,
+ul button:hover {
+  color: hsl(var(--fg));
+}
+
+ul a.selected {
+  color: hsl(var(--primary));
+  border: 1px solid hsla(var(--primary) / 0.18);
+  background-color: hsl(var(--primary) / 0.1);
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout {
+  border: 1px solid hsl(var(--glass-border));
+  background-color: hsl(var(--muted));
+}
+
+/* ================================================================ */
+/* ============================ QUERIES ============================== */
+/* ================================================================ */
+
+@media (min-width: 590px) {
+  .hamburger-container {
+    justify-content: end;
+  }
+
+  .menu {
+    display: block;
+    position: initial;
+    width: initial;
+    height: initial;
+    padding-block: 1rem;
+  }
+
+  .menu ul {
+    flex-direction: row;
+    gap: 10px;
+
+    li {
+      margin: 0;
+    }
+
+    a,
+    button {
+      font-size: 1rem;
+    }
+
+    li:has(.signup),
+    li:has(.logout) {
+      position: relative;
+      margin-inline-start: 10px;
+    }
+
+    li:has(.signup)::before,
+    li:has(.logout)::before {
+      position: absolute;
+      left: -10px;
+      content: "";
+      display: block;
+      width: 1px;
+      height: 100%;
+      background-color: hsl(var(--primary));
+    }
+  }
+
+  .hamburger {
+    display: none;
+  }
+}

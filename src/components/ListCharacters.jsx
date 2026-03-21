@@ -10,9 +10,7 @@ const ListCharacters = ({
   isLoading,
   search,
   favourites,
-  setFavourites,
   toggleFavourites,
-  user,
 }) => {
   const [data, setData] = useState(null);
 
@@ -46,7 +44,6 @@ const ListCharacters = ({
             key={item._id}
             item={item}
             favourites={favourites}
-            setFavourites={setFavourites}
             toggleFavourites={toggleFavourites}
           />
         );

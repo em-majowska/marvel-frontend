@@ -9,7 +9,7 @@ import {
 import ListCharacters from "../../components/ListCharacters";
 import Input from "../../components/Input";
 
-const Characters = ({ favourites, setFavourites, toggleFavourites, user }) => {
+const Characters = ({ favourites, toggleFavourites }) => {
   const [search, setSearch] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +40,6 @@ const Characters = ({ favourites, setFavourites, toggleFavourites, user }) => {
           isCharacters={true}
           search={search}
           favourites={favourites}
-          setFavourites={setFavourites}
           toggleFavourites={toggleFavourites}
         />
 

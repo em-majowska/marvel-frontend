@@ -10,7 +10,6 @@ const Carousel = ({
   dataToFetch,
   link,
   favourites,
-  setFavourites,
   toggleFavourites,
 }) => {
   const [data, setData] = useState([]);
@@ -70,7 +69,6 @@ const Carousel = ({
                 key={item._id}
                 item={item}
                 favourites={favourites}
-                setFavourites={setFavourites}
                 toggleFavourites={toggleFavourites}
               />
             ) : (
@@ -78,7 +76,6 @@ const Carousel = ({
                 key={item._id}
                 item={item}
                 favourites={favourites}
-                setFavourites={setFavourites}
                 toggleFavourites={toggleFavourites}
               />
             );

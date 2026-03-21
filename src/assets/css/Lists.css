@@ -1,6 +1,7 @@
 .characters,
 .comics,
-.character-page {
+.character-page,
+.account {
   .heading-container {
     padding: 0;
     margin-block-end: 0;
@@ -32,14 +33,14 @@
     gap: 1rem;
     justify-content: space-between;
 
-    a {
+    article {
       flex: 1 0 calc((100% - 1rem) / 2);
       max-width: calc(50% - 1rem);
       border-radius: 10px;
     }
 
     img {
-      width: 100%;
+      /* width: 100%; */
       background: url(https://dummyimage.com/100/fff/0011ff.png&text=Image+Not+Found)
         no-repeat scroll 0 0;
       filter: brightness(0.7);

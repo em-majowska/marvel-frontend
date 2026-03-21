@@ -11,7 +11,7 @@ import {
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
 
-const Character = ({ favourites, setFavourites }) => {
+const Character = ({ favourites }) => {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -71,13 +71,11 @@ const Character = ({ favourites, setFavourites }) => {
           limit={limit}
           currentPage={currentPage}
           favourites={favourites}
-          setFavourites={setFavourites}
         />
         <Pagination
           current={currentPage}
           pageSize={limit}
           total={totalItems}
-          align="center"
           prevIcon={<MdOutlineArrowBackIos />}
           nextIcon={<MdOutlineArrowForwardIos />}
           jumpNextIcon={<MdOutlineKeyboardDoubleArrowRight />}
