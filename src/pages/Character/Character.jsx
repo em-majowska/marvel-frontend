@@ -53,7 +53,7 @@ const Character = ({ favourites }) => {
           <Link to="/characters">
             <span>&#8592;</span> Back to Characters
           </Link>
-          <h1 className="header">{character.name}</h1>
+          <h1 className="heading">{character.name}</h1>
         </div>
       </section>
       <div className="container">

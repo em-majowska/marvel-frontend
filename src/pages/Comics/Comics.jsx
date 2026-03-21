@@ -12,7 +12,7 @@ import Input from "../../components/Input";
 const Comics = ({ favourites, toggleFavourites }) => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 26;
+  const limit = 30;
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,7 +20,7 @@ const Comics = ({ favourites, toggleFavourites }) => {
     <main className="comics">
       <div className="container">
         <section className="heading-container">
-          <h1 className="header">
+          <h1 className="heading">
             COMIC COLLECTION<span className="header-bottom"></span>
           </h1>
           <p className="baseline">

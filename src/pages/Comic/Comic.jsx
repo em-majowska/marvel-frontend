@@ -47,7 +47,7 @@ const Comic = () => {
             }}>
             <span>&#8592;</span> Go Back
           </Link>
-          <h1 className="header">
+          <h1 className="heading">
             {comic.title.length > 15 ? sliceText(comic.title, 22) : comic.title}
           </h1>
         </div>

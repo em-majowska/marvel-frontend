@@ -9,6 +9,7 @@
   input[type="search"] {
     margin-block-start: 50px;
     width: 100%;
+    max-width: 600px;
     padding: 1rem;
     border-radius: 10px;
     outline: none;
@@ -30,17 +31,18 @@
     min-width: calc(375px - 2rem);
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    row-gap: 3rem;
+    column-gap: 2rem;
     justify-content: space-between;
 
     article {
-      flex: 1 0 calc((100% - 1rem) / 2);
+      flex: 1 0 calc((100% - 2rem) / 2);
       max-width: calc(50% - 1rem);
       border-radius: 10px;
     }
 
     img {
-      /* width: 100%; */
+      width: 100%;
       background: url(https://dummyimage.com/100/fff/0011ff.png&text=Image+Not+Found)
         no-repeat scroll 0 0;
       filter: brightness(0.7);
@@ -59,7 +61,7 @@
 
     .description {
       max-height: 0px;
-      font-size: clamp(0.875rem, 1.105vw + 0.616rem, 1.5rem);
+      font-size: clamp(0.875rem, 1.105vw + 0.616rem, 1rem);
       color: hsl(var(--fg));
       font-family: var(--font-body);
       overflow: hidden;
@@ -83,4 +85,26 @@
 .comics .card-text {
   position: absolute;
   background: linear-gradient(to top, hsla(var(--bg)) 40%, transparent);
+}
+
+/* ================================================================ */
+/* ============================ QUERIES ============================== */
+/* ================================================================ */
+
+@media (min-width: 590px) {
+  .list article.card {
+    flex: 1 0 calc((100% - 4rem) / 3);
+  }
+}
+
+@media (min-width: 900px) {
+  .list article.card {
+    flex: 1 0 calc((100% - 6rem) / 4);
+  }
+}
+
+@media (min-width: 1000px) {
+  .list article.card {
+    flex: 1 0 calc((100% - 8rem) / 5);
+  }
 }

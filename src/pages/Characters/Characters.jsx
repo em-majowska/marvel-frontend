@@ -13,7 +13,7 @@ const Characters = ({ favourites, toggleFavourites }) => {
   const [search, setSearch] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 26;
+  const limit = 30;
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,7 +21,7 @@ const Characters = ({ favourites, toggleFavourites }) => {
     <main className="characters">
       <div className="container">
         <section className="heading-container">
-          <h1 className="header">
+          <h1 className="heading">
             All Characters<span className="header-bottom"></span>
           </h1>
           <p className="baseline">

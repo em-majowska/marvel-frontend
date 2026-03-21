@@ -372,10 +372,9 @@ footer {
   }
 
   p {
-    margin-inline: auto 0;
     font-weight: 200;
     line-height: 1.25;
-    text-align: right;
+    text-align: center;
 
     a,
     span {
