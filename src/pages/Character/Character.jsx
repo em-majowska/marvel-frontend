@@ -11,7 +11,7 @@ import {
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
 
-const Character = () => {
+const Character = ({ favourites, setFavourites }) => {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +31,7 @@ const Character = () => {
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
-        error.response && console.log(error.response.message);
+        error.response && console.log(error.response.data.message);
       }
     };
 
@@ -59,7 +59,8 @@ const Character = () => {
       <div className="container">
         <aside className="data">
           <p>
-            {character.comics.length}
+            {/* cleaned from null */}
+            {character.comics.filter((id) => id).length}
             <span>comics</span>
           </p>
           <p className="description">{character.description}</p>
@@ -69,6 +70,8 @@ const Character = () => {
           fromCharacter={character._id}
           limit={limit}
           currentPage={currentPage}
+          favourites={favourites}
+          setFavourites={setFavourites}
         />
         <Pagination
           current={currentPage}

@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 import CharacterCard from "./CharacterCard";
 import ComicCard from "./ComicCard";
 
-const Carousel = ({ ctaText, title, dataToFetch, link }) => {
+const Carousel = ({
+  ctaText,
+  title,
+  dataToFetch,
+  link,
+  favourites,
+  setFavourites,
+  toggleFavourites,
+}) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,7 +38,7 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
-        error.response && console.log(error.response.message);
+        error.response && console.log(error.response.data.message);
       }
     };
 
@@ -58,9 +66,21 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
         <div className="carousel">
           {data.map((item) => {
             return item.name ? (
-              <CharacterCard key={item._id} item={item} />
+              <CharacterCard
+                key={item._id}
+                item={item}
+                favourites={favourites}
+                setFavourites={setFavourites}
+                toggleFavourites={toggleFavourites}
+              />
             ) : (
-              <ComicCard key={item._id} item={item} />
+              <ComicCard
+                key={item._id}
+                item={item}
+                favourites={favourites}
+                setFavourites={setFavourites}
+                toggleFavourites={toggleFavourites}
+              />
             );
           })}
         </div>

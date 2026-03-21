@@ -2,7 +2,7 @@ import "./Home.css";
 import Carousel from "../../components/Carousel";
 import Button from "../../components/Button";
 
-const Home = () => {
+const Home = ({ favourites, setFavourites, toggleFavourites, user }) => {
   const charactersToGet = [
     "5fcf934ad8a2480017b916a9",
     "5fcf9495d8a2480017b918f4",
@@ -36,6 +36,9 @@ const Home = () => {
         title="featured characters"
         dataToFetch={charactersToGet}
         link="/characters"
+        favourites={favourites}
+        setFavourites={setFavourites}
+        toggleFavourites={toggleFavourites}
       />
       <div className="divider"></div>
       <Carousel
@@ -43,6 +46,9 @@ const Home = () => {
         title="latest comics"
         dataToFetch={comicsToGet}
         link="/comics"
+        favourites={favourites}
+        setFavourites={setFavourites}
+        toggleFavourites={toggleFavourites}
       />
       <div className="bottom">
         <p className="big-text">

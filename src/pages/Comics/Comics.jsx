@@ -9,7 +9,7 @@ import {
 import ListComics from "../../components/ListComics";
 import Input from "../../components/Input";
 
-const Comics = () => {
+const Comics = ({ favourites, setFavourites, toggleFavourites }) => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 26;
@@ -37,6 +37,9 @@ const Comics = () => {
           isLoading={isLoading}
           currentPage={currentPage}
           search={search}
+          favourites={favourites}
+          setFavourites={setFavourites}
+          toggleFavourites={toggleFavourites}
         />
 
         <Pagination

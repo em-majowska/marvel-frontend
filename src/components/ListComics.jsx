@@ -10,6 +10,10 @@ const ListComics = ({
   search,
   dataToFetch,
   fromCharacter,
+  favourites,
+  setFavourites,
+  toggleFavourites,
+  user,
 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +23,8 @@ const ListComics = ({
     const fetchData = async () => {
       try {
         if (dataToFetch) {
-          const data = await fetchDataCollection("comic", dataToFetch);
+          const cleanedArr = dataToFetch.filter((id) => id);
+          const data = await fetchDataCollection("comic", cleanedArr);
           const skip = currentPage > 1 ? limit * (currentPage - 1) : 0;
           const sliced = data.slice(skip, currentPage * limit);
 
@@ -36,7 +41,7 @@ const ListComics = ({
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
-        error.response && console.log(error.response.message);
+        error.response && console.log(error.response.data.message);
       }
     };
 
@@ -47,9 +52,19 @@ const ListComics = ({
     <p>Loading...</p>
   ) : (
     <section className="list">
-      {data.map((item) => (
-        <ComicCard key={item._id} item={item} fromCharacter={fromCharacter} />
-      ))}
+      {data.map(
+        (item) =>
+          item && (
+            <ComicCard
+              key={item._id}
+              item={item}
+              fromCharacter={fromCharacter}
+              favourites={favourites}
+              setFavourites={setFavourites}
+              toggleFavourites={toggleFavourites}
+            />
+          ),
+      )}
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaExclamation, FaRegEnvelope, FaRegUser } from "react-icons/fa";
+import { FaExclamation, FaRegUser } from "react-icons/fa";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 
@@ -8,8 +8,7 @@ const LoginModal = ({
   setSignupVisible,
   setLoginVisible,
   handleToken,
-  setUser,
-  user,
+  setFavourites,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +38,7 @@ const LoginModal = ({
         import.meta.env.VITE_BASE_URL + "/user/login",
         { email: email, password: password },
       );
-      setUser(response.data);
+      setFavourites(response.data.favourites);
 
       handleToken(response.data.token);
       setCompleted(true);
@@ -48,7 +47,7 @@ const LoginModal = ({
       error.response && setErrorMessage(error.response.data.message);
     }
   };
-
+  // TODO fix exclamation point
   return (
     <div
       className="modal-root signup"
@@ -70,7 +69,7 @@ const LoginModal = ({
         </button>
         {completed ? (
           <>
-            <h1>Welcome {user.account.username}</h1>
+            <h1>Welcome</h1>
             <p>You can now browse through your favourite heroes !</p>
             <button
               className="btn btn-secondary"

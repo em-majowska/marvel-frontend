@@ -21,7 +21,7 @@ const fetchDataCollection = (title, dataToFetch) => {
       return dataArray;
     } catch (error) {
       error.message && console.log(error.message);
-      error.response && console.log(error.response.message);
+      error.response && console.log(error.response.data.message);
     }
   };
 

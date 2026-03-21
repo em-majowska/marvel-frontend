@@ -2,18 +2,25 @@ import imagePlacehodler from "../assets/images/image-placeholder.png";
 import { Link, useLocation } from "react-router-dom";
 import sliceText from "../utils/sliceText";
 import purifyStr from "../utils/purifyStr";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import Cookies from "js-cookie";
 
-const ComicCard = ({ item, fromCharacter }) => {
+const ComicCard = ({
+  item,
+  fromCharacter,
+  favourites,
+  toggleFavourites,
+  user,
+}) => {
   const location = useLocation().pathname;
 
   return (
-    <Link
-      to={`/comic/${item._id}`}
-      state={{
-        from: fromCharacter ? `/character/${fromCharacter}` : `/comics`,
-      }}
-      className="card comic">
-      <article>
+    <article className="card comic">
+      <Link
+        to={`/comic/${item._id}`}
+        state={{
+          from: fromCharacter ? `/character/${fromCharacter}` : `/comics`,
+        }}>
         <div className="img-container">
           <img
             src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
@@ -36,8 +43,17 @@ const ComicCard = ({ item, fromCharacter }) => {
               )}></p>
           )}
         </div>
-      </article>
-    </Link>
+      </Link>
+      {Cookies.get("mut") && (
+        <button onClick={() => toggleFavourites(item, user)}>
+          {favourites.find((el) => el._id === item._id) ? (
+            <MdFavorite className="fav" />
+          ) : (
+            <MdFavoriteBorder />
+          )}
+        </button>
+      )}
+    </article>
   );
 };
 

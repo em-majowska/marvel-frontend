@@ -9,6 +9,10 @@ const ListCharacters = ({
   limit,
   isLoading,
   search,
+  favourites,
+  setFavourites,
+  toggleFavourites,
+  user,
 }) => {
   const [data, setData] = useState(null);
 
@@ -25,7 +29,7 @@ const ListCharacters = ({
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
-        error.response && console.log(error.response.message);
+        error.response && console.log(error.response.data.message);
       }
     };
 
@@ -37,7 +41,15 @@ const ListCharacters = ({
   ) : (
     <section className="list">
       {data.map((item) => {
-        return <CharacterCard key={item._id} item={item} />;
+        return (
+          <CharacterCard
+            key={item._id}
+            item={item}
+            favourites={favourites}
+            setFavourites={setFavourites}
+            toggleFavourites={toggleFavourites}
+          />
+        );
       })}
     </section>
   );

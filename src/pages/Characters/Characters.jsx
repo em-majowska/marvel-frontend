@@ -9,7 +9,7 @@ import {
 import ListCharacters from "../../components/ListCharacters";
 import Input from "../../components/Input";
 
-const Characters = () => {
+const Characters = ({ favourites, setFavourites, toggleFavourites, user }) => {
   const [search, setSearch] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,6 +39,9 @@ const Characters = () => {
           currentPage={currentPage}
           isCharacters={true}
           search={search}
+          favourites={favourites}
+          setFavourites={setFavourites}
+          toggleFavourites={toggleFavourites}
         />
 
         <Pagination

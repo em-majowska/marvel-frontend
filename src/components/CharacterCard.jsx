@@ -1,16 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
 import sliceText from "../utils/sliceText";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import Cookies from "js-cookie";
 
-const CharacterCard = ({ item }) => {
+const CharacterCard = ({ item, favourites, toggleFavourites, user }) => {
   const location = useLocation().pathname;
 
   return (
-    <Link to={`/character/${item._id}`} className="card pseudo character">
-      <article>
+    <article className="card character">
+      <Link to={`/character/${item._id}`}>
         <img
           src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
           alt="hero image"
+          className="pseudo"
         />
+
         <div className="card-text">
           <h3>{item.name}</h3>
           {location === "/characters" && (
@@ -21,9 +25,18 @@ const CharacterCard = ({ item }) => {
             </p>
           )}
         </div>
-      </article>
-    </Link>
+      </Link>
+
+      {Cookies.get("mut") && (
+        <button onClick={() => toggleFavourites(item, user)}>
+          {favourites.find((el) => el._id === item._id) ? (
+            <MdFavorite className="fav" />
+          ) : (
+            <MdFavoriteBorder />
+          )}
+        </button>
+      )}
+    </article>
   );
 };
-
 export default CharacterCard;
