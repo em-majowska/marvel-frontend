@@ -19,7 +19,7 @@
     object-fit: cover;
   }
 
-  .header-container {
+  .heading-container {
     position: absolute;
     bottom: 4rem;
     padding-inline: 1rem;

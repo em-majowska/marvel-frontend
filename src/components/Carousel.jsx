@@ -39,9 +39,9 @@ const Carousel = ({ ctaText, title, dataToFetch, link }) => {
 
   return (
     <section>
-      <div className="header-container">
+      <div className="heading-container">
         <span className="cta-text">{ctaText}</span>
-        <div className="header-row">
+        <div className="heading-row">
           <h2 className="header">
             {title}
             <span className="header-bottom"></span>

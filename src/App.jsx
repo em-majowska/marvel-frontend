@@ -1,19 +1,46 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Home from "./pages/Home/Home";
-import Characters from "./pages/Characters/Characters";
-import Comics from "./pages/Comics/Comics";
 import { MdError } from "react-icons/md";
-import Character from "./pages/Character/Character";
+import { useState } from "react";
+import Cookies from "js-cookie";
+import Header from "./components/Header";
+import Home from "./pages/Home/Home";
+import Comics from "./pages/Comics/Comics";
 import Comic from "./pages/Comic/Comic";
+import Characters from "./pages/Characters/Characters";
+import Character from "./pages/Character/Character";
+import SignupModal from "./components/SignupModal";
+import LoginModal from "./components/LoginModal";
+import Footer from "./components/Footer";
 
 function App() {
+  const [userToken, setUserToken] = useState(Cookies.get("mut") || null);
+  const [user, setUser] = useState(null);
+
+  const [signupVisible, setSignupVisible] = useState(false);
+  const [loginVisible, setLoginVisible] = useState(false);
+
+  const handleToken = (token) => {
+    if (token) {
+      setUserToken(token);
+      Cookies.set("mut", token, { expires: 7 });
+    } else {
+      setUserToken(token);
+      Cookies.remove("mut");
+    }
+  };
+
   return (
     <>
-      <Router>
-        <Header />
+      <Router className="App">
+        <Header
+          userToken={userToken}
+          handleToken={handleToken}
+          setSignupVisible={setSignupVisible}
+          setLoginVisible={setLoginVisible}
+          user={user}
+          setUser={setUser}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/characters" element={<Characters />} />
@@ -25,12 +52,28 @@ function App() {
             element={
               <main className="container">
                 <div className="error404">
-                  <MdError /> <h1>Page non trouvable</h1>
+                  <MdError /> <h1>Not found</h1>
                 </div>
               </main>
             }
           />
         </Routes>
+        {signupVisible && (
+          <SignupModal
+            setSignupVisible={setSignupVisible}
+            setLoginVisible={setLoginVisible}
+            handleToken={handleToken}
+          />
+        )}
+        {loginVisible && (
+          <LoginModal
+            setLoginVisible={setLoginVisible}
+            setSignupVisible={setSignupVisible}
+            handleToken={handleToken}
+            setUser={setUser}
+            user={user}
+          />
+        )}
         <Footer />
       </Router>
     </>
@@ -40,9 +83,6 @@ function App() {
 export default App;
 
 // TODO add favourites
-// TODO add descriptions to lists
-// TODO add input
-// TODO take care of unavaible pictures
 // TODO image quality change on query
 
 // TODO scheleton

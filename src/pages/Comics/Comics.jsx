@@ -19,7 +19,7 @@ const Comics = () => {
   return (
     <main className="comics">
       <div className="container">
-        <section className="header-container">
+        <section className="heading-container">
           <h1 className="header">
             COMIC COLLECTION<span className="header-bottom"></span>
           </h1>

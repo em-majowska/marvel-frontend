@@ -38,7 +38,7 @@ const Comic = () => {
             alt="hero image"
           />
         </div>
-        <div className="header-container">
+        <div className="heading-container">
           <Link
             to="#"
             onClick={(event) => {

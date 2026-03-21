@@ -20,7 +20,7 @@ const Characters = () => {
   return (
     <main className="characters">
       <div className="container">
-        <section className="header-container">
+        <section className="heading-container">
           <h1 className="header">
             All Characters<span className="header-bottom"></span>
           </h1>

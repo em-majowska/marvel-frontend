@@ -1,7 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import Hero from "./Hero";
+import { IoLogIn } from "react-icons/io5";
 
-const Header = () => {
+const Header = ({
+  setSignupVisible,
+  setLoginVisible,
+  userToken,
+  handleToken,
+}) => {
   const location = useLocation();
 
   return (
@@ -13,15 +19,6 @@ const Header = () => {
           </Link>
           <nav>
             <ul>
-              {/* <li>
-                {location.pathname === "/" ? (
-                  <Link to="/" className="selected">
-                    HOME
-                  </Link>
-                ) : (
-                  <Link to="/">HOME</Link>
-                )}
-              </li> */}
               <li>
                 {location.pathname === "/comics" ? (
                   <Link to="/comics" className="selected">
@@ -40,6 +37,42 @@ const Header = () => {
                   <Link to="/characters">CHARACTERS</Link>
                 )}
               </li>
+              {!userToken ? (
+                <>
+                  <li>
+                    <button
+                      className="signup"
+                      onClick={() => setSignupVisible(true)}>
+                      SINGUP
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="login"
+                      onClick={() => setLoginVisible(true)}>
+                      <IoLogIn />
+                      LOGIN
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <button
+                      className="logout"
+                      onClick={() => handleToken(null)}>
+                      LOGOUT
+                    </button>
+                  </li>
+                  <li>
+                    <Link
+                      className="account"
+                      onClick={() => setLoginVisible(true)}>
+                      ACCOUNT
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>

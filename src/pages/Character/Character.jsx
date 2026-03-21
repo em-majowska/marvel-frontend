@@ -49,7 +49,7 @@ const Character = () => {
             alt="hero image"
           />
         </div>
-        <div className="header-container">
+        <div className="heading-container">
           <Link to="/characters">
             <span>&#8592;</span> Back to Characters
           </Link>

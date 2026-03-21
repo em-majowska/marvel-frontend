@@ -1,7 +1,7 @@
 .characters,
 .comics,
 .character-page {
-  .header-container {
+  .heading-container {
     padding: 0;
     margin-block-end: 0;
   }
@@ -53,12 +53,12 @@
     width: 100%;
 
     h3 {
-      font-size: 1.5rem;
+      font-size: clamp(1.125rem, 0.663vw + 0.97rem, 1.5rem);
     }
 
     .description {
       max-height: 0px;
-      font-size: 1.125rem;
+      font-size: clamp(0.875rem, 1.105vw + 0.616rem, 1.5rem);
       color: hsl(var(--fg));
       font-family: var(--font-body);
       overflow: hidden;
