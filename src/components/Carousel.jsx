@@ -46,10 +46,10 @@ const Carousel = ({
 
   return (
     <section>
-      <div className="heading-container">
+      <div className="heading-container container">
         <span className="cta-text">{ctaText}</span>
         <div className="heading-row">
-          <h2 className="header">
+          <h2 className="heading">
             {title}
             <span className="header-bottom"></span>
           </h2>

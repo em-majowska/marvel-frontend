@@ -8,7 +8,8 @@ const Hero = () => {
           <source src={video} type="video/mp4" />
         </video>
       </div>
-      <div className="hero-container">
+      {/* <div className="container"> */}
+      <div className="hero-container container">
         <span className="top-text">Explore the multiverse</span>
         <h1>
           THE
@@ -22,8 +23,9 @@ const Hero = () => {
           <Button path={"/characters"} text="EXPLORE HEROES" filled={true} />
           <Button path={"/comics"} text="BROWSE COMICS" />
         </div>
+        <span className="scroll">SCROLL</span>
+        {/* </div> */}
       </div>
-      <span className="scroll">SCROLL</span>
     </section>
   );
 };
