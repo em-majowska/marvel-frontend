@@ -14,6 +14,7 @@ import LoginModal from "./components/LoginModal";
 import Footer from "./components/Footer";
 import axios from "axios";
 import Account from "./pages/Account/Account";
+import { AnimatePresence, motion } from "motion/react";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("mut") || null);
@@ -161,22 +162,43 @@ function App() {
             }
           />
         </Routes>
-        {signupVisible && (
-          <SignupModal
-            setSignupVisible={setSignupVisible}
-            setLoginVisible={setLoginVisible}
-            handleToken={handleToken}
-            setFavourites={setFavourites}
-          />
-        )}
-        {loginVisible && (
-          <LoginModal
-            setLoginVisible={setLoginVisible}
-            setSignupVisible={setSignupVisible}
-            handleToken={handleToken}
-            setFavourites={setFavourites}
-          />
-        )}
+        <AnimatePresence>
+          {signupVisible && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="modal-root signup"
+              onClick={() => setSignupVisible(false)}>
+              <SignupModal
+                setSignupVisible={setSignupVisible}
+                setLoginVisible={setLoginVisible}
+                handleToken={handleToken}
+                setFavourites={setFavourites}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {loginVisible && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="modal-root login"
+              onClick={() => setLoginVisible(false)}>
+              <LoginModal
+                setLoginVisible={setLoginVisible}
+                setSignupVisible={setSignupVisible}
+                handleToken={handleToken}
+                setFavourites={setFavourites}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
         <Footer />
       </Router>
     </>
@@ -184,9 +206,3 @@ function App() {
 }
 
 export default App;
-
-// TODO image quality change on query
-
-// TODO scheleton
-// responsiveness
-// auto-completion for search input

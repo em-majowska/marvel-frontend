@@ -49,91 +49,83 @@ const LoginModal = ({
   };
 
   return (
-    <div
-      className="modal-root signup"
-      onClick={() => {
-        setLoginVisible(false);
+    <section
+      className="modal container"
+      onClick={(event) => {
+        event.stopPropagation();
       }}>
-      <section
-        className="modal container"
-        onClick={(event) => {
-          event.stopPropagation();
+      <div className="top-bar"></div>
+      <button
+        className="close-btn"
+        onClick={() => {
+          setLoginVisible(false);
         }}>
-        <div className="top-bar"></div>
-        <button
-          className="close-btn"
-          onClick={() => {
-            setLoginVisible(false);
-          }}>
-          <MdClose />
-        </button>
-        {completed ? (
-          <>
-            <h1>Welcome</h1>
-            <p>You can now browse through your favourite heroes !</p>
-            <button
-              className="btn btn-secondary"
-              onClick={() => setLoginVisible(false)}>
-              Continue
-            </button>
-          </>
-        ) : (
-          <>
-            <h1>Marvel</h1>
-            <p className="heading-bottom">Welcome Back</p>
-            <div className="baseline">Sign in to access your collection</div>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="email">
-                <FaRegUser />
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(event) => {
-                    handleChange(event, setEmail);
-                  }}
-                  required
-                />
-                <FaExclamation className="invalid" />
-              </label>
-              <label htmlFor="password">
-                <IoLockClosedOutline />
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  // pattern="^.*(?=.{7,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?]).*$"
-                  // minlenght="7"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(event) => {
-                    handleChange(event, setPassword);
-                  }}
-                  required
-                />
-                <FaExclamation className="invalid" />
-              </label>
+        <MdClose />
+      </button>
+      {completed ? (
+        <>
+          <h1>Welcome</h1>
+          <p>You can now browse through your favourite heroes !</p>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setLoginVisible(false)}>
+            Continue
+          </button>
+        </>
+      ) : (
+        <>
+          <h1>Marvel</h1>
+          <p className="heading-bottom">Welcome Back</p>
+          <div className="baseline">Sign in to access your collection</div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">
+              <FaRegUser />
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(event) => {
+                  handleChange(event, setEmail);
+                }}
+                required
+              />
+              <FaExclamation className="invalid" />
+            </label>
+            <label htmlFor="password">
+              <IoLockClosedOutline />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(event) => {
+                  handleChange(event, setPassword);
+                }}
+                required
+              />
+              <FaExclamation className="invalid" />
+            </label>
 
-              <button className="btn btn-primary">Sign In</button>
-              {errorMessage && (
-                <div className="error">
-                  <FaExclamation /> <p>{errorMessage}</p>
-                </div>
-              )}
-            </form>
-            <a
-              onClick={() => {
-                setLoginVisible(false);
-                setSignupVisible(true);
-              }}>
-              Don't have an account? <span>Sign up!</span>
-            </a>
-          </>
-        )}
-      </section>
-    </div>
+            <button className="btn btn-primary">Sign In</button>
+            {errorMessage && (
+              <div className="error">
+                <FaExclamation /> <p>{errorMessage}</p>
+              </div>
+            )}
+          </form>
+          <a
+            onClick={() => {
+              setLoginVisible(false);
+              setSignupVisible(true);
+            }}>
+            Don't have an account? <span>Sign up!</span>
+          </a>
+        </>
+      )}
+    </section>
   );
 };
 
