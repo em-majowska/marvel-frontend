@@ -53,9 +53,9 @@ const Characters = ({ favourites, toggleFavourites }) => {
           jumpNextIcon={<MdOutlineKeyboardDoubleArrowRight />}
           jumpPrevIcon={<MdOutlineKeyboardDoubleArrowLeft />}
           onChange={(pageNumber) => {
-            setIsLoading(true);
             setCurrentPage(pageNumber);
           }}
+          hideOnSinglePage="true"
         />
       </div>
     </main>

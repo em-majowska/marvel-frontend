@@ -5,16 +5,19 @@
     position: relative;
     width: 100%;
   }
+
   .hero-image {
     position: relative;
+    overflow: hidden;
   }
+
   .hero-image::after {
     background: linear-gradient(to bottom, transparent, hsl(var(--bg)) 90%);
   }
 
-  .hero img {
+  .hero-image > img {
     width: 100%;
-    filter: brightness(0.7);
+    filter: brightness(0.7) blur(5px) grayscale(80%);
     height: clamp(600px, 80vh, 800px);
     object-fit: cover;
   }
@@ -23,10 +26,32 @@
     position: absolute;
     bottom: 4rem;
     padding-inline: 1rem;
+    width: 100%;
+    margin-inline: auto;
+
+    .heading-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      max-width: 1280px;
+    }
+    .thumbnail {
+      position: relative;
+      img {
+        margin: 0 0 0 auto;
+        border-radius: var(--radius);
+      }
+      button svg {
+        width: 70px;
+        height: 70px;
+      }
+    }
 
     a {
       padding: 1rem;
-      margin-inline: -1rem;
+      background-color: hsla(var(--bg) / 0.8);
+      border-radius: 40px;
+      border: 1px solid hsla(var(--primary) / 0.8);
     }
 
     a:hover span {
@@ -36,6 +61,8 @@
     h1 {
       margin-block-start: 30px;
       font-size: clamp(3.75rem, 8.314vw + 1.599rem, 8.25rem);
+      padding: 0.5rem;
+      background: linear-gradient(to bottom, transparent, hsl(var(--bg)) 70%);
     }
   }
 
@@ -45,10 +72,10 @@
     font-size: 1.125rem;
     line-height: 1.5;
     margin-block-end: 50px;
-    border-block: 1px solid var(--glass-border);
 
     p {
       padding: 1rem;
+      margin-block-end: 30px;
     }
     p:not(.description) {
       display: flex;
@@ -59,11 +86,28 @@
       flex: 1;
       font-weight: bold;
       font-family: var(--font-display);
-      border-inline-end: 1px solid var(--glass-border);
 
       span {
         font-size: 1.125rem;
         letter-spacing: 0.25em;
+      }
+    }
+  }
+}
+@media (min-width: 860px) {
+  .character-page,
+  .comic-page {
+    .heading-container {
+      img {
+        width: 400px;
+      }
+    }
+    aside.data {
+      flex-direction: row;
+
+      p:first-of-type {
+        flex: 1 0 350px;
+        border-inline-end: 1px solid var(--glass-border);
       }
     }
   }

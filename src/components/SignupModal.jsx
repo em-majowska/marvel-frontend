@@ -165,7 +165,7 @@ const SignupModal = ({ setSignupVisible, setLoginVisible, handleToken }) => {
               <button className="btn btn-primary">Create Account</button>
               {errorMessage && (
                 <div className="error">
-                  <p>{errorMessage}</p>
+                  <FaExclamation /> <p>{errorMessage}</p>
                 </div>
               )}
             </form>

@@ -34,8 +34,8 @@ function App() {
 
   // fetch favourites on page load if user is logged in
   useEffect(() => {
-    if (userToken) {
-      const fetchFavourites = async () => {
+    const fetchFavourites = async () => {
+      if (userToken) {
         try {
           const response = await axios.get(
             import.meta.env.VITE_BASE_URL + "/user/favourites",
@@ -51,10 +51,9 @@ function App() {
           error.message && console.log(error.message);
           error.response && console.log(error.response.data.message);
         }
-      };
-
-      fetchFavourites();
-    }
+      }
+    };
+    fetchFavourites();
   }, [userToken]);
 
   const toggleFavourites = async (obj) => {
@@ -94,6 +93,7 @@ function App() {
           handleToken={handleToken}
           setSignupVisible={setSignupVisible}
           setLoginVisible={setLoginVisible}
+          setFavourites={setFavourites}
         />
         <Routes>
           <Route
@@ -166,6 +166,7 @@ function App() {
             setSignupVisible={setSignupVisible}
             setLoginVisible={setLoginVisible}
             handleToken={handleToken}
+            setFavourites={setFavourites}
           />
         )}
         {loginVisible && (
@@ -173,6 +174,7 @@ function App() {
             setLoginVisible={setLoginVisible}
             setSignupVisible={setSignupVisible}
             handleToken={handleToken}
+            setFavourites={setFavourites}
           />
         )}
         <Footer />

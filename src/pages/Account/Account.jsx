@@ -53,49 +53,60 @@ const Account = ({ favourites, toggleFavourites }) => {
         <p>Loading...</p>
       ) : (
         <>
-          {" "}
           <section className="top container">
             <div className="top-text">
               <h1>{user.account.username}</h1>
             </div>
             {user.account.avatar ? (
-              <img src={user.account.avatar} alt="your avatar" />
+              <img src={user.account.avatar.secure_url} alt="your avatar" />
             ) : (
               <img src={avatar} alt="your avatar" />
             )}
           </section>
           <div className="divider"></div>
-          <section className="list favourites container">
-            {currentFavourites.map((fav) => {
-              return fav.name ? (
-                <CharacterCard
-                  item={fav}
-                  key={fav._id}
-                  favourites={favourites}
-                  toggleFavourites={toggleFavourites}
-                />
-              ) : (
-                <ComicCard
-                  item={fav}
-                  key={fav._id}
-                  favourites={favourites}
-                  toggleFavourites={toggleFavourites}
-                />
-              );
-            })}
-          </section>
-          <Pagination
-            current={currentPage}
-            pageSize={limit}
-            total={totalItems}
-            prevIcon={<MdOutlineArrowBackIos />}
-            nextIcon={<MdOutlineArrowForwardIos />}
-            jumpNextIcon={<MdOutlineKeyboardDoubleArrowRight />}
-            jumpPrevIcon={<MdOutlineKeyboardDoubleArrowLeft />}
-            onChange={(pageNumber) => {
-              setCurrentPage(pageNumber);
-            }}
-          />
+
+          {favourites.length === 0 ? (
+            <div className="container">
+              <p className="empty">
+                Your favourite heroes and comics will appear here!
+              </p>
+            </div>
+          ) : (
+            <>
+              <section className="list favourites container">
+                {currentFavourites.map((fav) => {
+                  return fav.name ? (
+                    <CharacterCard
+                      item={fav}
+                      key={fav._id}
+                      favourites={favourites}
+                      toggleFavourites={toggleFavourites}
+                    />
+                  ) : (
+                    <ComicCard
+                      item={fav}
+                      key={fav._id}
+                      favourites={favourites}
+                      toggleFavourites={toggleFavourites}
+                    />
+                  );
+                })}
+              </section>
+              <Pagination
+                current={currentPage}
+                pageSize={limit}
+                total={totalItems}
+                prevIcon={<MdOutlineArrowBackIos />}
+                nextIcon={<MdOutlineArrowForwardIos />}
+                jumpNextIcon={<MdOutlineKeyboardDoubleArrowRight />}
+                jumpPrevIcon={<MdOutlineKeyboardDoubleArrowLeft />}
+                onChange={(pageNumber) => {
+                  setCurrentPage(pageNumber);
+                }}
+                hideOnSinglePage="true"
+              />
+            </>
+          )}
         </>
       )}
     </main>

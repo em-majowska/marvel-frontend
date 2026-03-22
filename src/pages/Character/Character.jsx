@@ -5,19 +5,22 @@ import { Link, useParams } from "react-router-dom";
 import ListComics from "../../components/ListComics";
 import Pagination from "rc-pagination";
 import {
+  MdFavorite,
+  MdFavoriteBorder,
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
   MdOutlineKeyboardDoubleArrowLeft,
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import Cookies from "js-cookie";
 
-const Character = ({ favourites }) => {
+const Character = ({ favourites, toggleFavourites }) => {
   const [character, setCharacter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 6;
+  const limit = 30;
   const [totalItems, setTotalItems] = useState(0);
-
+  const token = Cookies.get("mut");
   const { id } = useParams();
 
   useEffect(() => {
@@ -46,14 +49,32 @@ const Character = ({ favourites }) => {
         <div className="hero-image pseudo">
           <img
             src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
-            alt="hero image"
           />
         </div>
         <div className="heading-container">
-          <Link to="/characters">
-            <span>&#8592;</span> Back to Characters
-          </Link>
-          <h1 className="heading">{character.name}</h1>
+          <div className="container">
+            <div className="thumbnail">
+              <img
+                src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
+                alt="hero image"
+              />
+              {token && favourites && (
+                <button onClick={() => toggleFavourites(character)}>
+                  {favourites.find((el) => el._id === character._id) ? (
+                    <MdFavorite className="fav" />
+                  ) : (
+                    <MdFavoriteBorder />
+                  )}
+                </button>
+              )}
+            </div>
+            <div className="heading-text">
+              <Link to="/characters">
+                <span>&#8592;</span> Back to Characters
+              </Link>
+              <h1 className="heading">{character.name}</h1>
+            </div>
+          </div>
         </div>
       </section>
       <div className="container">
@@ -83,6 +104,7 @@ const Character = ({ favourites }) => {
           onChange={(pageNumber) => {
             setCurrentPage(pageNumber);
           }}
+          hideOnSinglePage="true"
         />
       </div>
     </main>

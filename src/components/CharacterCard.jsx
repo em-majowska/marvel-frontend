@@ -3,12 +3,13 @@ import sliceText from "../utils/sliceText";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import Cookies from "js-cookie";
 
-const CharacterCard = ({ item, favourites, toggleFavourites, user }) => {
+const CharacterCard = ({ item, favourites, toggleFavourites }) => {
   const location = useLocation().pathname;
+  const token = Cookies.get("mut");
 
   return (
-    <article className="card character pseudo">
-      <Link to={`/character/${item._id}`}>
+    <article className="card character">
+      <Link to={`/character/${item._id}`} className="pseudo">
         <img
           src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
           alt="hero image"
@@ -26,8 +27,8 @@ const CharacterCard = ({ item, favourites, toggleFavourites, user }) => {
         </div>
       </Link>
 
-      {Cookies.get("mut") && (
-        <button onClick={() => toggleFavourites(item, user)}>
+      {token && favourites && (
+        <button onClick={() => toggleFavourites(item)}>
           {favourites.find((el) => el._id === item._id) ? (
             <MdFavorite className="fav" />
           ) : (

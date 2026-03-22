@@ -108,16 +108,19 @@
     outline: none;
   }
 
-  label:has(input:invalid) {
-    border-block-end: 1px solid hsl(var(--primary));
-  }
-
   .invalid {
     width: 20px;
     height: 20px;
     font-size: 2rem;
+    color: transparent;
+  }
 
-    color: hsl(var(--primary));
+  label:has(input:invalid) {
+    border-block-end: 1px solid hsl(var(--primary));
+
+    .invalid {
+      color: hsl(var(--primary));
+    }
   }
 
   label:has(input:focus-visible) {
@@ -172,5 +175,15 @@
     width: 100%;
     margin-block-start: 50px;
     margin-inline: auto;
+  }
+}
+
+.modal .error {
+  display: flex;
+  gap: 20px;
+  color: hsl(var(--primary));
+
+  svg {
+    height: 25px;
   }
 }

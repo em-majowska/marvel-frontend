@@ -11,6 +11,7 @@ const Header = ({
   setLoginVisible,
   userToken,
   handleToken,
+  setFavourites,
 }) => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -105,6 +106,7 @@ const Header = ({
                         className="logout"
                         onClick={() => {
                           handleToken(null);
+                          setFavourites(null);
                           toggleMenu();
                           navigate("/");
                         }}>

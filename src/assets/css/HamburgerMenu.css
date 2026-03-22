@@ -95,6 +95,7 @@ ul a.selected {
     width: initial;
     height: initial;
     padding-block: 1rem;
+    background: transparent;
   }
 
   .menu ul {

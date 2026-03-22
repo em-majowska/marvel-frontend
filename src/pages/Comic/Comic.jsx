@@ -35,22 +35,34 @@ const Comic = () => {
         <div className="hero-image pseudo">
           <img
             src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
-            alt="hero image"
+            alt=""
           />
         </div>
         <div className="heading-container">
-          <Link
-            to="#"
-            onClick={(event) => {
-              event.preventDefault();
-              navigate(-1);
-            }}>
-            <span>&#8592;</span> Go Back
-          </Link>
-          <h1 className="heading">
-            {comic.title.length > 15 ? sliceText(comic.title, 22) : comic.title}
-          </h1>
+          <div className="container">
+            {" "}
+            <img
+              src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
+              alt="hero image"
+            />
+            <div className="heading-text">
+              <Link
+                to="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate(-1);
+                }}>
+                <span>&#8592;</span> Go Back
+              </Link>
+              <h1 className="heading">
+                {comic.title.length > 15
+                  ? sliceText(comic.title, 22)
+                  : comic.title}
+              </h1>
+            </div>
+          </div>
         </div>
+        <div className="divider"></div>
       </section>
       <div className="container">
         <aside className="data">

@@ -5,14 +5,9 @@ import purifyStr from "../utils/purifyStr";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import Cookies from "js-cookie";
 
-const ComicCard = ({
-  item,
-  fromCharacter,
-  favourites,
-  toggleFavourites,
-  user,
-}) => {
+const ComicCard = ({ item, fromCharacter, favourites, toggleFavourites }) => {
   const location = useLocation().pathname;
+  const token = Cookies.get("mut");
 
   return (
     <article className="card comic">
@@ -44,8 +39,8 @@ const ComicCard = ({
           )}
         </div>
       </Link>
-      {Cookies.get("mut") && (
-        <button onClick={() => toggleFavourites(item, user)}>
+      {token && favourites && (
+        <button onClick={() => toggleFavourites(item)}>
           {favourites.find((el) => el._id === item._id) ? (
             <MdFavorite className="fav" />
           ) : (

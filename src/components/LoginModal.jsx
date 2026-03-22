@@ -47,7 +47,7 @@ const LoginModal = ({
       error.response && setErrorMessage(error.response.data.message);
     }
   };
-  // TODO fix exclamation point
+
   return (
     <div
       className="modal-root signup"
@@ -119,7 +119,7 @@ const LoginModal = ({
               <button className="btn btn-primary">Sign In</button>
               {errorMessage && (
                 <div className="error">
-                  <p>{errorMessage}</p>
+                  <FaExclamation /> <p>{errorMessage}</p>
                 </div>
               )}
             </form>

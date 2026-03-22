@@ -9,8 +9,11 @@
 
     img {
       width: 200px;
+      aspect-ratio: 1/1;
       border-radius: 50%;
+      object-fit: cover;
     }
+
     h1 {
       font-size: 4rem;
     }
@@ -20,5 +23,10 @@
     article {
       flex: 1 0 250px;
     }
+  }
+
+  .empty {
+    text-align: center;
+    font-size: 2rem;
   }
 }
