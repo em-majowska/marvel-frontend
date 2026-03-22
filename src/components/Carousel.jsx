@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CharacterCard from "./CharacterCard";
 import ComicCard from "./ComicCard";
+import { motion } from "motion/react";
 
 const Carousel = ({
   ctaText,
@@ -63,21 +64,36 @@ const Carousel = ({
         <p>Loading...</p>
       ) : (
         <div className="carousel">
-          {data.map((item) => {
+          {data.map((item, i) => {
             return item.name ? (
-              <CharacterCard
+              <motion.article
+                className="card character"
                 key={item._id}
-                item={item}
-                favourites={favourites}
-                toggleFavourites={toggleFavourites}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}>
+                <CharacterCard
+                  item={item}
+                  favourites={favourites}
+                  toggleFavourites={toggleFavourites}
+                />
+              </motion.article>
             ) : (
-              <ComicCard
+              <motion.article
+                className="card comic"
                 key={item._id}
-                item={item}
-                favourites={favourites}
-                toggleFavourites={toggleFavourites}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}>
+                <ComicCard
+                  key={item._id}
+                  item={item}
+                  favourites={favourites}
+                  toggleFavourites={toggleFavourites}
+                />
+              </motion.article>
             );
           })}
         </div>

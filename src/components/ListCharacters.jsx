@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CharacterCard from "./CharacterCard";
+import { motion } from "motion/react";
 
 const ListCharacters = ({
   setTotalItems,
@@ -30,22 +31,41 @@ const ListCharacters = ({
         error.response && console.log(error.response.data.message);
       }
     };
+    const handleScrollToTop = () => {
+      if (window.scrollY !== 0) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    };
 
+    handleScrollToTop();
     fetchData();
   }, [currentPage, limit, setIsLoading, setTotalItems, search]);
 
   return isLoading ? (
-    <p>Loading...</p>
+    <section className="list empty">
+      <p>Loading...</p>
+    </section>
   ) : (
     <section className="list">
-      {data.map((item) => {
+      {data.map((item, i) => {
         return (
-          <CharacterCard
+          <motion.article
+            className="card character"
             key={item._id}
-            item={item}
-            favourites={favourites}
-            toggleFavourites={toggleFavourites}
-          />
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15 }}>
+            <CharacterCard
+              key={item._id}
+              item={item}
+              favourites={favourites}
+              toggleFavourites={toggleFavourites}
+            />
+          </motion.article>
         );
       })}
     </section>

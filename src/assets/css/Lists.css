@@ -25,9 +25,10 @@
   .divider {
     margin-block: 50px;
   }
-
-  .list {
+  .list.empty {
     min-height: 700px;
+  }
+  .list {
     min-width: calc(375px - 2rem);
     display: flex;
     flex-wrap: wrap;

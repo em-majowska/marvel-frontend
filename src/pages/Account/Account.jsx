@@ -12,6 +12,7 @@ import {
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
 import "./Account.css";
+import { motion } from "motion/react";
 
 const Account = ({ favourites, toggleFavourites }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +51,9 @@ const Account = ({ favourites, toggleFavourites }) => {
   ) : (
     <main className="account">
       {isLoading ? (
-        <p>Loading...</p>
+        <section className="list empty">
+          <p>Loading...</p>
+        </section>
       ) : (
         <>
           <section className="top container">
@@ -74,21 +77,35 @@ const Account = ({ favourites, toggleFavourites }) => {
           ) : (
             <>
               <section className="list favourites container">
-                {currentFavourites.map((fav) => {
+                {currentFavourites.map((fav, i) => {
                   return fav.name ? (
-                    <CharacterCard
-                      item={fav}
+                    <motion.article
+                      className="card character"
                       key={fav._id}
-                      favourites={favourites}
-                      toggleFavourites={toggleFavourites}
-                    />
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.15 }}>
+                      <CharacterCard
+                        item={fav}
+                        favourites={favourites}
+                        toggleFavourites={toggleFavourites}
+                      />
+                    </motion.article>
                   ) : (
-                    <ComicCard
-                      item={fav}
+                    <motion.article
+                      className="card comic"
                       key={fav._id}
-                      favourites={favourites}
-                      toggleFavourites={toggleFavourites}
-                    />
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.15 }}>
+                      <ComicCard
+                        item={fav}
+                        favourites={favourites}
+                        toggleFavourites={toggleFavourites}
+                      />
+                    </motion.article>
                   );
                 })}
               </section>

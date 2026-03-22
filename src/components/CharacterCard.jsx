@@ -8,7 +8,7 @@ const CharacterCard = ({ item, favourites, toggleFavourites }) => {
   const token = Cookies.get("mut");
 
   return (
-    <article className="card character">
+    <>
       <Link to={`/character/${item._id}`} className="pseudo">
         <img
           src={`${item.thumbnail.path}/portrait_fantastic.${item.thumbnail.extension}`}
@@ -36,7 +36,7 @@ const CharacterCard = ({ item, favourites, toggleFavourites }) => {
           )}
         </button>
       )}
-    </article>
+    </>
   );
 };
 export default CharacterCard;

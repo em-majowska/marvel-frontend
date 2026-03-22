@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ComicCard from "./ComicCard";
 import fetchDataCollection from "../utils/fetchDataCollection";
+import { motion } from "motion/react";
 
 const ListComics = ({
   setTotalItems,
@@ -35,7 +36,16 @@ const ListComics = ({
           setTotalItems(response.data.count);
           setData(response.data.results);
         }
+        const handleScrollToTop = () => {
+          if (window.scrollY !== 0) {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }
+        };
 
+        handleScrollToTop();
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
@@ -47,19 +57,28 @@ const ListComics = ({
   }, [currentPage, limit, setIsLoading, setTotalItems, search, dataToFetch]);
 
   return isLoading ? (
-    <p>Loading...</p>
+    <section className="list empty">
+      <p>Loading...</p>
+    </section>
   ) : (
     <section className="list">
       {data.map(
-        (item) =>
+        (item, i) =>
           item && (
-            <ComicCard
+            <motion.article
+              className="card comic"
               key={item._id}
-              item={item}
-              fromCharacter={fromCharacter}
-              favourites={favourites}
-              toggleFavourites={toggleFavourites}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}>
+              <ComicCard
+                item={item}
+                fromCharacter={fromCharacter}
+                favourites={favourites}
+                toggleFavourites={toggleFavourites}
+              />
+            </motion.article>
           ),
       )}
     </section>

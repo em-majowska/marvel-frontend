@@ -10,7 +10,7 @@ const ComicCard = ({ item, fromCharacter, favourites, toggleFavourites }) => {
   const token = Cookies.get("mut");
 
   return (
-    <article className="card comic">
+    <>
       <Link
         to={`/comic/${item._id}`}
         state={{
@@ -48,7 +48,7 @@ const ComicCard = ({ item, fromCharacter, favourites, toggleFavourites }) => {
           )}
         </button>
       )}
-    </article>
+    </>
   );
 };
 
