@@ -9,17 +9,20 @@ const Navigation = ({
   handleToken,
   setFavourites,
   toggleMenu,
+  isDesktop,
 }) => {
   const navigate = useNavigate();
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    const currentPosition = window.pageYOffset;
-    window.scrollTo({ top: 0 });
+    if (!isDesktop) {
+      document.body.style.overflow = "hidden";
+      const currentPosition = window.pageYOffset;
+      window.scrollTo({ top: 0 });
 
-    return () => {
-      document.body.style.overflow = "unset";
-      window.scrollTo({ top: currentPosition });
-    };
+      return () => {
+        document.body.style.overflow = "unset";
+        window.scrollTo({ top: currentPosition });
+      };
+    }
   }, []);
   return (
     <ul>

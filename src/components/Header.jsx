@@ -79,6 +79,7 @@ const Header = ({
                     setFavourites={setFavourites}
                     isOpen={isOpen}
                     toggleMenu={toggleMenu}
+                    isDesktop={isDesktop}
                   />
                 </motion.nav>
               )}
