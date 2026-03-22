@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import Hero from "./Hero";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import "../assets/css/Navigation.css";
@@ -16,9 +16,28 @@ const Header = ({
 }) => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
+  useEffect(() => {
+    const checkIfDesktop = () => {
+      const desktopQuery = window.matchMedia("(min-width: 590px)");
+      setIsDesktop(desktopQuery.matches);
+
+      if (desktopQuery.matches) {
+        setIsOpen(true);
+      }
+    };
+
+    checkIfDesktop();
+
+    window.addEventListener("resize", checkIfDesktop);
+
+    return () => window.removeEventListener("resize", checkIfDesktop);
+  }, []);
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    if (!isDesktop) {
+      setIsOpen(!isOpen);
+    }
   };
 
   return (
@@ -51,7 +70,7 @@ const Header = ({
                   animate={{ left: "0%" }}
                   exit={{ left: "100%" }}
                   transition={{ duration: 0.3 }}
-                  className={`menu`}>
+                  className={"menu"}>
                   <Navigation
                     setSignupVisible={setSignupVisible}
                     setLoginVisible={setLoginVisible}
