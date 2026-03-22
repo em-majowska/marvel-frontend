@@ -1,4 +1,4 @@
-import "./Character.css";
+import "../../assets/css/DedicatedPage.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ import {
   MdOutlineKeyboardDoubleArrowLeft,
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import { motion } from "motion/react";
 import Cookies from "js-cookie";
 
 const Character = ({ favourites, toggleFavourites }) => {
@@ -45,38 +46,47 @@ const Character = ({ favourites, toggleFavourites }) => {
     <p>Loading...</p>
   ) : (
     <main className="character-page">
-      <section className="hero">
-        <div className="hero-image pseudo">
-          <img
-            src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
-          />
-        </div>
-        <div className="heading-container">
-          <div className="container">
-            <div className="thumbnail">
-              <img
-                src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
-                alt="hero image"
-              />
-              {token && favourites && (
-                <button onClick={() => toggleFavourites(character)}>
-                  {favourites.find((el) => el._id === character._id) ? (
-                    <MdFavorite className="fav" />
-                  ) : (
-                    <MdFavoriteBorder />
-                  )}
-                </button>
-              )}
-            </div>
-            <div className="heading-text">
-              <Link to="/characters">
-                <span>&#8592;</span> Back to Characters
-              </Link>
-              <h1 className="heading">{character.name}</h1>
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1,
+          delay: 0.3,
+          ease: "linear",
+        }}>
+        <section className="hero">
+          <div className="hero-image pseudo">
+            <img
+              src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
+            />
+          </div>
+          <div className="heading-container">
+            <div className="container">
+              <div className="thumbnail">
+                <img
+                  src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
+                  alt="hero image"
+                />
+                {token && favourites && (
+                  <button onClick={() => toggleFavourites(character)}>
+                    {favourites.find((el) => el._id === character._id) ? (
+                      <MdFavorite className="fav" />
+                    ) : (
+                      <MdFavoriteBorder />
+                    )}
+                  </button>
+                )}
+              </div>
+              <div className="heading-text">
+                <Link to="/characters">
+                  <span>&#8592;</span> Back to Characters
+                </Link>
+                <h1 className="heading">{character.name}</h1>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </motion.div>
       <div className="container">
         <aside className="data">
           <p>

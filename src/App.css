@@ -6,6 +6,17 @@ body {
   font-family: var(--font-body);
 }
 
+* {
+  transition:
+    color var(--transition),
+    background var(--transition),
+    border var(--transition),
+    max-height var(--transition),
+    scale var(--transition),
+    top var(--transition),
+    right var(--transition),
+    bottom var(--transition);
+}
 .container {
   max-width: min(100% - 2rem, 1280px);
   margin: 0 auto;
@@ -39,11 +50,10 @@ h3,
 h4 {
   max-width: 65ch;
 }
-* {
-  transition: all 0.2s ease-in-out;
-}
 
 .btn {
+  position: relative;
+  top: 0px;
   padding: var(--btn-padding);
   border-radius: var(--radius);
   font-weight: bold;
@@ -55,7 +65,8 @@ h4 {
 }
 
 .btn:hover {
-  transform: translateY(-3px);
+  top: -3px;
+  /* transform: translateY(-3px); */
 }
 
 .btn-secondary {
@@ -318,6 +329,7 @@ header {
     flex: 0 1 auto;
   }
   li a {
+    font-size: 1rem;
     padding: 0.75em;
     border: 1px solid hsl(var(--muted-foreground));
     border-radius: 5px;
@@ -428,6 +440,10 @@ footer {
 
   main.home {
     padding-block-start: 150px;
+  }
+
+  .rc-pagination li a {
+    font-size: 1.5rem;
   }
 }
 

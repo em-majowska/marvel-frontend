@@ -10,7 +10,6 @@ const Hero = () => {
           <source src={video} type="video/mp4" />
         </video>
       </div>
-      {/* <div className="container"> */}
       <div className="hero-container container">
         <motion.div
           initial={{ opacity: 0, y: 60 }}

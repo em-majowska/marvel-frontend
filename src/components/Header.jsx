@@ -3,8 +3,9 @@ import Hero from "./Hero";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
-import "../assets/css/HamburgerMenu.css";
+import "../assets/css/Navigation.css";
 import Navigation from "./Navigation";
+import { AnimatePresence, motion } from "motion/react";
 
 const Header = ({
   setSignupVisible,
@@ -43,15 +44,26 @@ const Header = ({
                 <GiHamburgerMenu />
               </button>
             )}
-            <Navigation
-              setSignupVisible={setSignupVisible}
-              setLoginVisible={setLoginVisible}
-              userToken={userToken}
-              handleToken={handleToken}
-              setFavourites={setFavourites}
-              isOpen={isOpen}
-              toggleMenu={toggleMenu}
-            />
+            <AnimatePresence>
+              {isOpen && (
+                <motion.nav
+                  initial={{ left: "100%" }}
+                  animate={{ left: "0%" }}
+                  exit={{ left: "100%" }}
+                  transition={{ duration: 0.3 }}
+                  className={`menu`}>
+                  <Navigation
+                    setSignupVisible={setSignupVisible}
+                    setLoginVisible={setLoginVisible}
+                    userToken={userToken}
+                    handleToken={handleToken}
+                    setFavourites={setFavourites}
+                    isOpen={isOpen}
+                    toggleMenu={toggleMenu}
+                  />
+                </motion.nav>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>

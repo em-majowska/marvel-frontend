@@ -25,16 +25,15 @@
   .heading-container {
     position: absolute;
     bottom: 4rem;
-    padding-inline: 1rem;
     width: 100%;
     margin-inline: auto;
 
     .heading-text {
       position: absolute;
       bottom: 0;
-      width: 100%;
-      max-width: 1280px;
+      width: min(100% - 2rem, 1280px);
     }
+
     .thumbnail {
       position: relative;
       img {
@@ -49,7 +48,7 @@
 
     a {
       padding: 1rem;
-      background-color: hsla(var(--bg) / 0.8);
+      background-color: hsla(var(--primary) / 0.15);
       border-radius: 40px;
       border: 1px solid hsla(var(--primary) / 0.8);
     }

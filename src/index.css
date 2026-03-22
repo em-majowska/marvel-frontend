@@ -57,6 +57,7 @@
   --glass-bg: hsl(0 0% 100% / 0.04);
   --glass-border: hsl(0 0% 100% / 0.08);
 
+  --transition: 0.3s ease-in-out;
   color: hsl(var(--muted-foreground));
   background: hsl(var(--bg));
   font-synthesis: none;
