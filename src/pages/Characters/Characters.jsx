@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Pagination from "rc-pagination";
 import {
   MdOutlineArrowBackIos,

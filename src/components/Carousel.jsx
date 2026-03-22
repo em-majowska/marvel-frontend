@@ -34,7 +34,7 @@ const Carousel = ({
         const response = await Promise.all(promisesArr);
         const dataArray = response.map((item) => item.data);
 
-        setData(dataArray);
+        setData([...dataArray, ...dataArray, ...dataArray]);
         setIsLoading(false);
       } catch (error) {
         error.message && console.log(error.message);
@@ -63,40 +63,41 @@ const Carousel = ({
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="carousel">
-          {data.map((item, i) => {
-            return item.name ? (
-              <motion.article
-                className="card character"
-                key={item._id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}>
-                <CharacterCard
-                  item={item}
-                  favourites={favourites}
-                  toggleFavourites={toggleFavourites}
-                />
-              </motion.article>
-            ) : (
-              <motion.article
-                className="card comic"
-                key={item._id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}>
-                <ComicCard
-                  key={item._id}
-                  item={item}
-                  favourites={favourites}
-                  toggleFavourites={toggleFavourites}
-                />
-              </motion.article>
-            );
-          })}
-        </div>
+        <section className="carousel-container">
+          <div className="carousel animate-marquee">
+            {data.map((item, i) => {
+              return item.name ? (
+                <motion.article
+                  className="card character"
+                  key={`${item._id}${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}>
+                  <CharacterCard
+                    item={item}
+                    favourites={favourites}
+                    toggleFavourites={toggleFavourites}
+                  />
+                </motion.article>
+              ) : (
+                <motion.article
+                  className="card comic"
+                  key={`${item._id}${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}>
+                  <ComicCard
+                    item={item}
+                    favourites={favourites}
+                    toggleFavourites={toggleFavourites}
+                  />
+                </motion.article>
+              );
+            })}
+          </div>
+        </section>
       )}
     </section>
   );
